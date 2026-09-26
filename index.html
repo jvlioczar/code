@@ -1,191 +1,7129 @@
 <!DOCTYPE html>
 
-<html data-theme="dark" lang="pt-br">
+<html lang="pt-br">
 <head>
+<!-- Ícones principais --><!-- Apple (iOS) -->
+<link href="./images/icon_192.png" rel="apple-touch-icon"/>
+<!-- Preload opcional para o SVG se quiser -->
+<link as="image" href="./images/icon.svg" imagesizes="23px" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>BiblioVerse — A Biblioteca de Tudo</title>
-<meta content="BiblioVerse — A Biblioteca de Tudo. Portal central para acessar as bibliotecas temáticas e conhecer o projeto e seus curadores." data-i18n="meta.description" name="description"/>
+<meta content="#0e1117" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<title>BiblioVerse — A Biblioteca de Programação — Catálogo pesquisável do essencial da programação por categoria</title>
+<!-- App icons -->
+<link href="images/icon.svg" rel="icon" type="image/svg+xml"/>
+<link href="images/icon_192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="images/icon_512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="images/icon_192.png" rel="apple-touch-icon"/>
+<meta content="#0e1117" name="theme-color"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<meta content="Catálogo pesquisável do essencial da programação por categoria: linguagens, formatos, protocolos, conceitos, ferramentas e figuras-chave. O projeto é minimalista e ideal para colocar nos favoritos do seu navegador." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link href="images/logo.svg" rel="icon" type="image/svg+xml"/>
-<link href="styles.css" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" onload="this.rel='stylesheet'" rel="preload"/><noscript><link href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="styles.css" onload="this.rel='stylesheet'" rel="preload"/><noscript><link href="styles.css" rel="stylesheet"/></noscript>
+<link href="./manifest.webmanifest" rel="manifest"/>
 </head>
 <body>
-<header class="site-header">
-<div class="container header-inner">
+<!-- Super-bar: 8 equal tabs across the full width -->
+<nav aria-label="Bibliotecas" class="superbar">
+<div class="superbar-toggle"><span class="superbar-title i18n-superbar-title">BiblioVerse - A Biblioteca de Tudo</span> <span aria-hidden="true" class="icon-burger"><i></i><i></i><i></i></span><span aria-hidden="true" class="icon-close">✕</span></div>
+<ul class="superbar-list">
+<li class="superbar-item"><a data-key="design" href="https://design.biblioverse.org">Design</a></li>
+<li class="superbar-item"><a data-key="games" href="https://games.biblioverse.org">Games</a></li>
+<li class="superbar-item"><a data-key="language" href="https://language.biblioverse.org">Idiomas</a></li>
+<li class="superbar-item"><a data-key="ai" href="https://ai.biblioverse.org">IA</a></li>
+<li class="superbar-item"><a data-key="music" href="https://music.biblioverse.org">Música</a></li>
+<li class="superbar-item active"><a data-key="coding" href="https://code.biblioverse.org">Programação</a></li>
+<li class="superbar-item"><a data-key="social" href="https://social.biblioverse.org">Redes Sociais</a></li>
+</ul>
+</nav>
+<aside aria-label="Categorias" class="sidepush" id="sidepush"><div class="sidepush-top"><button aria-label="Expandir menu" class="side-toggle" id="menuToggle" title="Expandir menu" type="button">▶</button></div><nav class="sidepush-scroll" id="sideScroll"><ul class="sidepush-menu" id="sideMenu"></ul></nav></aside><div class="push-wrap" id="pushWrap"><header class="site-header">
+<div class="header-inner container">
 <div class="brand-wrap">
 <h1 class="brand">
-<span class="brand-gradient" data-i18n="brand.name">BiblioVerse</span>
-<span class="beta-badge" data-i18n="brand.beta">BETA</span>
+<!-- Link apenas no ícone -->
+<a href="https://biblioverse.org" rel="noopener noreferrer" target="_blank">
+<img alt="Logo" class="brand-logo" fetchpriority="high" src="images/icon.svg" style="height:23px;width:23px;vertical-align:middle;margin-right:4px;"/>
+</a>
+<!-- Nome do site continua separado -->
+<a class="brand-link" href="#">
+<span class="brand-gradient i18n-brand">A Biblioteca de Programação</span>
+</a>
+<span class="beta-badge">
+      BETA
+    </span>
 </h1>
 <span class="byline">
-<span data-i18n="brand.byline.prefix">A biblioteca de tudo</span>
-<span> </span><span data-i18n="brand.byline.suffix"></span>
+<span class="i18n-by">Idealizada por</span>
+<a class="bylink" href="https://instagram.com/jvlioczar" rel="noopener noreferrer" target="_blank">Julio Cesar Prava</a>
+<span class="i18n-and"></span>
+<a class="bylink" href="" rel="noopener noreferrer" target="_blank"></a>
 </span>
-</div><div class="controls" role="group">
-<button aria-label="Toggle language" class="toggle" id="langToggle" title="EN/PT">🌐</button>
-<button aria-label="Alternar tema" class="toggle" id="themeToggle">☀️</button>
+</div>
+<div class="controls">
+<input autofocus="" class="mono" id="search" placeholder="Buscar por nome" type="search"/>
+<select class="mono" id="categoryFilter" title="Filtrar por categoria"></select>
+<div class="control-group">
+<button aria-label="Alternar tema" class="toggle" id="themeToggle" type="button">☀️</button>
+<button aria-label="Alternar idioma" class="toggle" id="langToggle" type="button">🇦🇺</button>
+<button aria-label="Informações" class="toggle info" id="infoBtn" type="button">ℹ️</button>
+<div aria-hidden="true" class="infotooltip" id="infoTip" role="tooltip"></div>
 </div>
 </div>
-</header>
-<main class="container">
-<!-- Hero Logo (200x200, responsivo e centralizado) -->
-<img alt="Logo do BiblioVerse" class="hero-logo" data-i18n-attr="alt:hero.logoAlt" fetchpriority="high" loading="eager" src="images/logo.png"/>
-<!-- Grid de bibliotecas -->
-<section aria-label="Acesso rápido às bibliotecas" data-i18n-attr="aria-label:section.libs.aria">
-<div class="lib-grid" role="list">
-<!-- Ordem alfabética por nome completo (PT) -->
-<a class="lib-card" data-key="coding" href="https://code.biblioverse.org" rel="noopener" role="listitem" target="_blank">
-<span class="favicon">💻</span>
-<span class="lib-name" data-i18n="libs.coding">Biblioteca de Programação (em construção)</span>
-<span aria-hidden="true" class="lib-visit">↗</span>
-</a>
-<a class="lib-card" data-key="design" href="https://design.biblioverse.org" rel="noopener" role="listitem" target="_blank">
-<span class="favicon">🎨</span>
-<span class="lib-name" data-i18n="libs.design">Biblioteca de Design (em construção)</span>
-<span aria-hidden="true" class="lib-visit">↗</span>
-</a>
-<a class="lib-card" data-key="language" href="https://language.biblioverse.org" rel="noopener" role="listitem" target="_blank">
-<span class="favicon">🗣️</span>
-<span class="lib-name" data-i18n="libs.language">Biblioteca de Estudo de Idiomas (em construção)</span>
-<span aria-hidden="true" class="lib-visit">↗</span>
-</a>
-<a class="lib-card" data-key="games" href="https://games.biblioverse.org" rel="noopener" role="listitem" target="_blank">
-<span class="favicon">🎮</span>
-<span class="lib-name" data-i18n="libs.games">Biblioteca de Games (em construção)</span>
-<span aria-hidden="true" class="lib-visit">↗</span>
-</a>
-<a class="lib-card" data-key="ai" href="https://ai.biblioverse.org" rel="noopener" role="listitem" target="_blank">
-<span class="favicon">🤖</span>
-<span class="lib-name" data-i18n="libs.ai">Biblioteca de IAs</span>
-<span aria-hidden="true" class="lib-visit">↗</span>
-</a>
-<a class="lib-card" data-key="music" href="https://music.biblioverse.org" rel="noopener" role="listitem" target="_blank">
-<span class="favicon">🎵</span>
-<span class="lib-name" data-i18n="libs.music">Biblioteca de Música (em construção)</span>
-<span aria-hidden="true" class="lib-visit">↗</span>
-</a>
-<a class="lib-card" data-key="social" href="https://social.biblioverse.org" rel="noopener" role="listitem" target="_blank">
-<span class="favicon">🗺</span>
-<span class="lib-name" data-i18n="libs.social">Biblioteca de Redes Sociais</span>
-<span aria-hidden="true" class="lib-visit">↗</span>
-</a>
 </div>
-</section>
-<!-- Sobre o projeto (cor oposta) -->
-<section aria-label="Sobre o projeto" class="" data-i18n-attr="aria-label:section.about.aria">
-<h2 class="section-title gradient-title" data-i18n="section.about.title">Sobre o BiblioVerse</h2><div class="about-card"><p data-i18n="section.about.p1">
-        O BiblioVerse é um hub de bibliotecas temáticas com curadoria humana.
-        A missão é simples: <em>acesso rápido, claro e verificado</em> ao melhor conteúdo,
-        em uma interface mínima e veloz. Código aberto, espírito colaborativo.
-      </p><p data-i18n="section.about.p2">
-        Foco em três pilares: utilidade, transparência e performance. Se um link não ajuda,
-        ele não entra. Se ajuda, entra polido — com contexto, ícone e tradução quando couber.
-      </p></div>
-</section>
-<!-- Curadores com filtro por biblioteca -->
-<section aria-label="Curadores" data-i18n-attr="aria-label:section.curators.aria">
-<div class="cur-head">
-<h2 class="section-title gradient-title" data-i18n="section.curators.title">Curadores</h2>
-<label class="sr-only" data-i18n="section.curators.filterLabel" for="libFilter">Filtrar por biblioteca</label>
-<select class="mono" data-i18n-select="section.curators.filterOptions" id="libFilter">
-<option data-i18n="section.curators.all" value="all">Todas as bibliotecas</option>
-<option data-i18n="libs.design.short" value="design">Design</option>
-<option data-i18n="libs.games.short" value="games">Games</option>
-<option data-i18n="libs.language.short" value="language">Idiomas</option>
-<option data-i18n="libs.ai.short" value="ai">IA</option>
-<option data-i18n="libs.music.short" value="music">Música</option>
-<option data-i18n="libs.coding.short" value="coding">Programação</option>
-<option data-i18n="libs.social.short" value="social">Redes Sociais</option>
-</select>
-</div>
-<div class="curators" id="curators" role="list">
-<article class="cur-card" data-libs="language" role="listitem">
-<img alt="Aline Lima" class="cur-photo" loading="lazy" src="images/curadores/aline.jpg"/>
-<div class="cur-meta">
-<h3 class="cur-name">Aline Lima</h3>
-<p class="cur-desc" data-i18n="curators.aline.desc">Eu estou preparando minha descrição.</p>
-<div class="cur-links">
-<a class="btn" data-i18n="links.linkedin" href="https://linkedin.com/in/juliocesarprava" rel="noopener" target="_blank">LinkedIn</a>
-<a class="btn" data-i18n="links.instagram" href="https://instagram.com/jvlioczar" rel="noopener" target="_blank">Instagram</a>
-</div>
-</div>
-</article>
-<article class="cur-card" data-libs="social" role="listitem">
-<img alt="Andreza Moras" class="cur-photo" loading="lazy" src="images/curadores/andreza.jpg"/>
-<div class="cur-meta">
-<h3 class="cur-name">Andreza Moras</h3>
-<p class="cur-desc" data-i18n="curators.andreza.desc">Eu estou preparando minha descrição.</p>
-<div class="cur-links">
-<a class="btn" data-i18n="links.linkedin" href="https://linkedin.com" rel="noopener" target="_blank">LinkedIn</a>
-<a class="btn" data-i18n="links.instagram" href="https://instagram.com" rel="noopener" target="_blank">Instagram</a>
-</div>
-</div>
-</article>
-<article class="cur-card" data-libs="design, games, language, ai, music, coding, social" role="listitem">
-<img alt="Julio Cesar Prava" class="cur-photo" loading="lazy" src="images/curadores/julio.jpg"/>
-<div class="cur-meta">
-<h3 class="cur-name">Julio Cesar Prava</h3>
-<p class="cur-desc" data-i18n="curators.julio.desc">Eu estou preparando minha descrição.</p>
-<div class="cur-links">
-<a class="btn" data-i18n="links.linkedin" href="https://linkedin.com/in/juliocesarprava" rel="noopener" target="_blank">LinkedIn</a>
-<a class="btn" data-i18n="links.instagram" href="https://instagram.com/jvlioczar" rel="noopener" target="_blank">Instagram</a>
-</div>
-</div>
-</article>
-<article class="cur-card" data-libs="coding" role="listitem">
-<img alt="Roney Amorim" class="cur-photo" loading="lazy" src="images/curadores/roney.jpg"/>
-<div class="cur-meta">
-<h3 class="cur-name">Roney Amorim</h3>
-<p class="cur-desc" data-i18n="curators.roney.desc">Eu estou preparando minha descrição.</p>
-<div class="cur-links">
-<a class="btn" data-i18n="links.linkedin" href="https://linkedin.com" rel="noopener" target="_blank">LinkedIn</a>
-<a class="btn" data-i18n="links.instagram" href="https://instagram.com" rel="noopener" target="_blank">Instagram</a>
-</div>
-</div>
-</article>
-<article class="cur-card" data-libs="design" role="listitem">
-<img alt="Tainá Rodrigues" class="cur-photo" loading="lazy" src="images/curadores/taina.jpg"/>
-<div class="cur-meta">
-<h3 class="cur-name">Tainá Rodrigues</h3>
-<p class="cur-desc" data-i18n="curators.taina.desc">Eu estou preparando minha descrição.</p>
-<div class="cur-links">
-<a class="btn" data-i18n="links.linkedin" href="https://linkedin.com" rel="noopener" target="_blank">LinkedIn</a>
-<a class="btn" data-i18n="links.instagram" href="https://instagram.com" rel="noopener" target="_blank">Instagram</a>
-</div>
-</div>
-</article>
-<article class="cur-card" data-libs="games" role="listitem">
-<img alt="Henrique Mendonça Prado" class="cur-photo" loading="lazy" src="images/curadores/henrique.jpg"/>
-<div class="cur-meta">
-<h3 class="cur-name">Henrique Mendonça Prado</h3>
-<p class="cur-desc" data-i18n="curators.henrique.desc">Eu estou preparando minha descrição.</p>
-<div class="cur-links">
-<a class="btn" data-i18n="links.linkedin" href="https://linkedin.com" rel="noopener" target="_blank">LinkedIn</a>
-<a class="btn" data-i18n="links.instagram" href="https://instagram.com" rel="noopener" target="_blank">Instagram</a>
-</div>
-</div>
-</article>
-</div>
-</section>
-</main>
+</header><div class="container">
+<div aria-live="polite" id="root"><div class="skeleton" id="skeleton"><div class="skeleton-title"></div><div class="skeleton-grid"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></div></div></div>
 <footer class="footer">
 <div class="footer-inner">
-<div class="footer-count" data-i18n="footer.count">
-        Portal central do <strong class="proj-name">BiblioVerse</strong> — última atualização: Setembro/2025
-      </div>
-<p class="footer-lead" data-i18n="footer.lead">&lt;strong class="proj-name"&gt;BiblioVerse&lt;/strong&gt; é um projeto colaborativo para organizar e facilitar o acesso a bibliotecas úteis em diferentes temas.</p>
-<div class="footer-actions">
-<button class="btn share" data-i18n="actions.share" id="shareBtn" type="button">Compartilhar</button>
+<!-- Total vem primeiro -->
+<div class="footer-count">
+<span class="i18n-total">Total</span>: 
+      <span id="count">0</span>
+<span class="i18n-items">itens</span>
+<span class="sep">|</span>
+<span class="i18n-lastupdate">Última atualização: Setembro/2026</span>
 </div>
-<p class="footer-thanks" data-i18n="footer.thanks">Obrigado pela visita!</p>
+<p class="footer-lead">
+<span class="i18n-footer-lead-pre">O projeto</span>
+<strong class="proj-name i18n-project-name">A Biblioteca de Programação</strong>
+<span class="i18n-footer-lead-post">foi idealizada por Julio Cesar Prava e construída com a ajuda de IA. O projeto reúne itens selecionados e revisados por curadores humanos.</span>
+</p>
+<p class="footer-note i18n-bookmarkShare">Salve esse projeto nos seus favoritos e compartilhe!</p>
+<p class="footer-nav"><span class="i18n-footernav">Acesse as bibliotecas de outros temas úteis no <strong class="bverse-strong">BiblioVerse</strong>.</span></p>
+<div class="footer-actions">
+<a class="btn linkedin mono" href="https://linkedin.com/in/juliocesarprava/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<button aria-label="Favoritar" class="btn star mono" id="favBtn" type="button">⭐</button>
+<button class="btn share mono" id="shareBtn" type="button"><span class="i18n-share">Compartilhar</span></button>
+<a class="btn bverse mono" href="https://biblioverse.org" rel="noopener noreferrer" target="_blank">BiblioVerse</a>
+</div>
+<p class="footer-thanks i18n-thanks">Obrigado pela visita!</p>
 </div>
 </footer>
-<button aria-label="Voltar ao topo" data-i18n-attr="aria-label:actions.toTop;title:actions.toTop" id="toTopBtn" title="Voltar ao topo">
-<svg aria-hidden="true" height="18" viewbox="0 0 24 24" width="18"><path d="M7 14l5-5 5 5"></path></svg>
-</button>
-<script src="script.js"></script>
+</div><script id="preloaded-data" type="application/json">[
+  {
+    "category": "Algoritmos",
+    "name": "Algoritmo",
+    "url": "https://en.wikipedia.org/wiki/Algorithm",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Algoritmo A*",
+    "url": "https://en.wikipedia.org/wiki/A*_search_algorithm",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Algoritmo de Dijkstra",
+    "url": "https://en.wikipedia.org/wiki/Dijkstra's_algorithm",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Algoritmo de Euclides",
+    "url": "https://en.wikipedia.org/wiki/Euclidean_algorithm",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Algoritmo guloso",
+    "url": "https://en.wikipedia.org/wiki/Greedy_algorithm",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Backtracking",
+    "url": "https://en.wikipedia.org/wiki/Backtracking",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Bubble sort",
+    "url": "https://en.wikipedia.org/wiki/Bubble_sort",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Busca binária",
+    "url": "https://en.wikipedia.org/wiki/Binary_search",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Busca em largura (BFS)",
+    "url": "https://en.wikipedia.org/wiki/Breadth-first_search",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Busca em profundidade (DFS)",
+    "url": "https://en.wikipedia.org/wiki/Depth-first_search",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Busca linear",
+    "url": "https://en.wikipedia.org/wiki/Linear_search",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Crivo de Eratóstenes",
+    "url": "https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Dividir e conquistar",
+    "url": "https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Função hash",
+    "url": "https://en.wikipedia.org/wiki/Hash_function",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Heapsort",
+    "url": "https://en.wikipedia.org/wiki/Heapsort",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Insertion sort",
+    "url": "https://en.wikipedia.org/wiki/Insertion_sort",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Merge sort",
+    "url": "https://en.wikipedia.org/wiki/Merge_sort",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Notação Big O",
+    "url": "https://en.wikipedia.org/wiki/Big_O_notation",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Algoritmos",
+    "name": "PageRank",
+    "url": "https://en.wikipedia.org/wiki/PageRank",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Programação dinâmica",
+    "url": "https://en.wikipedia.org/wiki/Dynamic_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Quicksort",
+    "url": "https://en.wikipedia.org/wiki/Quicksort",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Algoritmos",
+    "name": "Selection sort",
+    "url": "https://en.wikipedia.org/wiki/Selection_sort",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Brilliant",
+    "url": "https://en.wikipedia.org/wiki/Brilliant_(website)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Coddy",
+    "url": "https://coddy.tech/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "CodeCombat",
+    "url": "https://en.wikipedia.org/wiki/CodeCombat",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Encode",
+    "url": "https://learnencode.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Enki",
+    "url": "https://www.enki.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Grasshopper",
+    "url": "https://en.wikipedia.org/wiki/Grasshopper_(mobile_app)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Lightbot",
+    "url": "https://en.wikipedia.org/wiki/Lightbot",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Mimo",
+    "url": "https://mimo.org/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Programming Hero",
+    "url": "https://www.programming-hero.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Py",
+    "url": "https://apps.apple.com/us/app/py-learn-to-code/id1111105894",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Sololearn",
+    "url": "https://www.sololearn.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Aplicativos de ensino",
+    "name": "Swift Playgrounds",
+    "url": "https://en.wikipedia.org/wiki/Swift_Playgrounds",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Apache Kafka",
+    "url": "https://en.wikipedia.org/wiki/Apache_Kafka",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Arquitetura hexagonal",
+    "url": "https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Arquitetura orientada a eventos",
+    "url": "https://en.wikipedia.org/wiki/Event-driven_architecture",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Arquitetura orientada a serviços (SOA)",
+    "url": "https://en.wikipedia.org/wiki/Service-oriented_architecture",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "CORBA",
+    "url": "https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Fila de mensagens",
+    "url": "https://en.wikipedia.org/wiki/Message_queue",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "GraphQL",
+    "url": "https://en.wikipedia.org/wiki/GraphQL",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "gRPC",
+    "url": "https://en.wikipedia.org/wiki/GRPC",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "JSON-RPC",
+    "url": "https://en.wikipedia.org/wiki/JSON-RPC",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Microsserviços",
+    "url": "https://en.wikipedia.org/wiki/Microservices",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Monólito",
+    "url": "https://en.wikipedia.org/wiki/Monolithic_application",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "MVC",
+    "url": "https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "MVVM",
+    "url": "https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "OpenAPI",
+    "url": "https://en.wikipedia.org/wiki/OpenAPI_Specification",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "RabbitMQ",
+    "url": "https://en.wikipedia.org/wiki/RabbitMQ",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "REST",
+    "url": "https://en.wikipedia.org/wiki/REST",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Serverless",
+    "url": "https://en.wikipedia.org/wiki/Serverless_computing",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "SOAP",
+    "url": "https://en.wikipedia.org/wiki/SOAP",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arquitetura e APIs",
+    "name": "Webhook",
+    "url": "https://en.wikipedia.org/wiki/Webhook",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Amazon DynamoDB",
+    "url": "https://en.wikipedia.org/wiki/Amazon_DynamoDB",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Apache Cassandra",
+    "url": "https://en.wikipedia.org/wiki/Apache_Cassandra",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "CouchDB",
+    "url": "https://en.wikipedia.org/wiki/Apache_CouchDB",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "dBase",
+    "url": "https://en.wikipedia.org/wiki/DBase",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "DuckDB",
+    "url": "https://en.wikipedia.org/wiki/DuckDB",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Elasticsearch",
+    "url": "https://en.wikipedia.org/wiki/Elasticsearch",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Firebase",
+    "url": "https://en.wikipedia.org/wiki/Firebase",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Firebird",
+    "url": "https://en.wikipedia.org/wiki/Firebird_(database_server)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "IBM Db2",
+    "url": "https://en.wikipedia.org/wiki/IBM_Db2",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "MariaDB",
+    "url": "https://en.wikipedia.org/wiki/MariaDB",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Microsoft Access",
+    "url": "https://en.wikipedia.org/wiki/Microsoft_Access",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Microsoft SQL Server",
+    "url": "https://en.wikipedia.org/wiki/Microsoft_SQL_Server",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "MongoDB",
+    "url": "https://en.wikipedia.org/wiki/MongoDB",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "MySQL",
+    "url": "https://en.wikipedia.org/wiki/MySQL",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Neo4j",
+    "url": "https://en.wikipedia.org/wiki/Neo4j",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Oracle Database",
+    "url": "https://en.wikipedia.org/wiki/Oracle_Database",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "PostgreSQL",
+    "url": "https://en.wikipedia.org/wiki/PostgreSQL",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Redis",
+    "url": "https://en.wikipedia.org/wiki/Redis",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "SQLite",
+    "url": "https://en.wikipedia.org/wiki/SQLite",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Bancos de dados",
+    "name": "Supabase",
+    "url": "https://supabase.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Apache Spark",
+    "url": "https://en.wikipedia.org/wiki/Apache_Spark",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Caffe",
+    "url": "https://en.wikipedia.org/wiki/Caffe_(software)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Hugging Face",
+    "url": "https://en.wikipedia.org/wiki/Hugging_Face",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Jupyter",
+    "url": "https://en.wikipedia.org/wiki/Project_Jupyter",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Keras",
+    "url": "https://en.wikipedia.org/wiki/Keras",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "LangChain",
+    "url": "https://en.wikipedia.org/wiki/LangChain",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Matplotlib",
+    "url": "https://en.wikipedia.org/wiki/Matplotlib",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "NumPy",
+    "url": "https://en.wikipedia.org/wiki/NumPy",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "OpenCV",
+    "url": "https://en.wikipedia.org/wiki/OpenCV",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "pandas",
+    "url": "https://en.wikipedia.org/wiki/Pandas_(software)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Plotly",
+    "url": "https://en.wikipedia.org/wiki/Plotly",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Polars",
+    "url": "https://pola.rs/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "PyTorch",
+    "url": "https://en.wikipedia.org/wiki/PyTorch",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "scikit-learn",
+    "url": "https://en.wikipedia.org/wiki/Scikit-learn",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "SciPy",
+    "url": "https://en.wikipedia.org/wiki/SciPy",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "TensorFlow",
+    "url": "https://en.wikipedia.org/wiki/TensorFlow",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Ciência de dados e IA",
+    "name": "Theano",
+    "url": "https://en.wikipedia.org/wiki/Theano_(software)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "ASCII",
+    "url": "https://en.wikipedia.org/wiki/ASCII",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "Base64",
+    "url": "https://en.wikipedia.org/wiki/Base64",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "Codificação por porcentagem (URL)",
+    "url": "https://en.wikipedia.org/wiki/Percent-encoding",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "EBCDIC",
+    "url": "https://en.wikipedia.org/wiki/EBCDIC",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "Emoji",
+    "url": "https://en.wikipedia.org/wiki/Emoji",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "Entidades HTML",
+    "url": "https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "ISO 8859-1 (Latin-1)",
+    "url": "https://en.wikipedia.org/wiki/ISO/IEC_8859-1",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "Punycode",
+    "url": "https://en.wikipedia.org/wiki/Punycode",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "Shift JIS",
+    "url": "https://en.wikipedia.org/wiki/Shift_JIS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "Unicode",
+    "url": "https://en.wikipedia.org/wiki/Unicode",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "UTF-16",
+    "url": "https://en.wikipedia.org/wiki/UTF-16",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "UTF-32",
+    "url": "https://en.wikipedia.org/wiki/UTF-32",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "UTF-8",
+    "url": "https://en.wikipedia.org/wiki/UTF-8",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Codificação de caracteres",
+    "name": "Windows-1252",
+    "url": "https://en.wikipedia.org/wiki/Windows-1252",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "DEV Community",
+    "url": "https://dev.to/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "Experts Exchange",
+    "url": "https://en.wikipedia.org/wiki/Experts-Exchange",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "Hacker News",
+    "url": "https://en.wikipedia.org/wiki/Hacker_News",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "Hashnode",
+    "url": "https://hashnode.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "Lobsters",
+    "url": "https://lobste.rs/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "Reddit r/programming",
+    "url": "https://www.reddit.com/r/programming/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "Slashdot",
+    "url": "https://en.wikipedia.org/wiki/Slashdot",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "Stack Exchange",
+    "url": "https://en.wikipedia.org/wiki/Stack_Exchange",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "Stack Overflow",
+    "url": "https://en.wikipedia.org/wiki/Stack_Overflow",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Comunidades e fóruns",
+    "name": "TabNews",
+    "url": "https://www.tabnews.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "API",
+    "url": "https://en.wikipedia.org/wiki/API",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Banco de dados",
+    "url": "https://en.wikipedia.org/wiki/Database",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Biblioteca",
+    "url": "https://en.wikipedia.org/wiki/Library_(computing)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Booleano",
+    "url": "https://en.wikipedia.org/wiki/Boolean_data_type",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Bug",
+    "url": "https://en.wikipedia.org/wiki/Software_bug",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Cache",
+    "url": "https://en.wikipedia.org/wiki/Cache_(computing)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Classe",
+    "url": "https://en.wikipedia.org/wiki/Class_(computer_programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Cliente-servidor",
+    "url": "https://en.wikipedia.org/wiki/Client%E2%80%93server_model",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Coleta de lixo",
+    "url": "https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Compilador",
+    "url": "https://en.wikipedia.org/wiki/Compiler",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Concorrência",
+    "url": "https://en.wikipedia.org/wiki/Concurrency_(computer_science)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Constante",
+    "url": "https://en.wikipedia.org/wiki/Constant_(computer_programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Controle de versão",
+    "url": "https://en.wikipedia.org/wiki/Version_control",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Código aberto",
+    "url": "https://en.wikipedia.org/wiki/Open_source",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Depuração",
+    "url": "https://en.wikipedia.org/wiki/Debugging",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Encapsulamento",
+    "url": "https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Estrutura condicional",
+    "url": "https://en.wikipedia.org/wiki/Conditional_(computer_programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Expressão regular",
+    "url": "https://en.wikipedia.org/wiki/Regular_expression",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Framework",
+    "url": "https://en.wikipedia.org/wiki/Software_framework",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Função",
+    "url": "https://en.wikipedia.org/wiki/Function_(computer_programming)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Gerenciamento de memória",
+    "url": "https://en.wikipedia.org/wiki/Memory_management",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Hello, World!",
+    "url": "https://en.wikipedia.org/wiki/%22Hello,_World!%22_program",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Herança",
+    "url": "https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "IDE",
+    "url": "https://en.wikipedia.org/wiki/Integrated_development_environment",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Interpretador",
+    "url": "https://en.wikipedia.org/wiki/Interpreter_(computing)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Laço de repetição",
+    "url": "https://en.wikipedia.org/wiki/Control_flow#Loops",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Máquina de Turing",
+    "url": "https://en.wikipedia.org/wiki/Turing_machine",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Objeto",
+    "url": "https://en.wikipedia.org/wiki/Object_(computer_science)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Parâmetro",
+    "url": "https://en.wikipedia.org/wiki/Parameter_(computer_programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Polimorfismo",
+    "url": "https://en.wikipedia.org/wiki/Polymorphism_(computer_science)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Ponteiro",
+    "url": "https://en.wikipedia.org/wiki/Pointer_(computer_programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Recursão",
+    "url": "https://en.wikipedia.org/wiki/Recursion_(computer_science)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Refatoração",
+    "url": "https://en.wikipedia.org/wiki/Code_refactoring",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "SDK",
+    "url": "https://en.wikipedia.org/wiki/Software_development_kit",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Sintaxe",
+    "url": "https://en.wikipedia.org/wiki/Syntax_(programming_languages)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Teste de software",
+    "url": "https://en.wikipedia.org/wiki/Software_testing",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Thread",
+    "url": "https://en.wikipedia.org/wiki/Thread_(computing)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Tipo de dado",
+    "url": "https://en.wikipedia.org/wiki/Data_type",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Tratamento de exceções",
+    "url": "https://en.wikipedia.org/wiki/Exception_handling",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Conceitos fundamentais",
+    "name": "Variável",
+    "url": "https://en.wikipedia.org/wiki/Variable_(computer_science)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Azure DevOps",
+    "url": "https://en.wikipedia.org/wiki/Azure_DevOps_Server",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Bitbucket",
+    "url": "https://en.wikipedia.org/wiki/Bitbucket",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Codeberg",
+    "url": "https://en.wikipedia.org/wiki/Codeberg",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "CVS",
+    "url": "https://en.wikipedia.org/wiki/Concurrent_Versions_System",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Fossil",
+    "url": "https://en.wikipedia.org/wiki/Fossil_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Git",
+    "url": "https://en.wikipedia.org/wiki/Git",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Gitea",
+    "url": "https://en.wikipedia.org/wiki/Gitea",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "GitHub",
+    "url": "https://en.wikipedia.org/wiki/GitHub",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "GitLab",
+    "url": "https://en.wikipedia.org/wiki/GitLab",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Google Code",
+    "url": "https://en.wikipedia.org/wiki/Google_Developers#Google_Code",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Launchpad",
+    "url": "https://en.wikipedia.org/wiki/Launchpad_(website)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Mercurial",
+    "url": "https://en.wikipedia.org/wiki/Mercurial",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Perforce",
+    "url": "https://en.wikipedia.org/wiki/Perforce",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "SourceForge",
+    "url": "https://en.wikipedia.org/wiki/SourceForge",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Controle de versão e hospedagem de código",
+    "name": "Subversion (SVN)",
+    "url": "https://en.wikipedia.org/wiki/Apache_Subversion",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Alura",
+    "url": "https://www.alura.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Boot.dev",
+    "url": "https://www.boot.dev/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Code.org",
+    "url": "https://en.wikipedia.org/wiki/Code.org",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Codecademy",
+    "url": "https://en.wikipedia.org/wiki/Codecademy",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Coursera",
+    "url": "https://en.wikipedia.org/wiki/Coursera",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "CS50 (Harvard)",
+    "url": "https://en.wikipedia.org/wiki/CS50",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Curso em Vídeo",
+    "url": "https://www.cursoemvideo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "DataCamp",
+    "url": "https://www.datacamp.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "DIO",
+    "url": "https://www.dio.me/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "edX",
+    "url": "https://en.wikipedia.org/wiki/EdX",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "freeCodeCamp",
+    "url": "https://en.wikipedia.org/wiki/FreeCodeCamp",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Frontend Masters",
+    "url": "https://frontendmasters.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Khan Academy",
+    "url": "https://en.wikipedia.org/wiki/Khan_Academy",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "MIT OpenCourseWare",
+    "url": "https://en.wikipedia.org/wiki/MIT_OpenCourseWare",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Pluralsight",
+    "url": "https://en.wikipedia.org/wiki/Pluralsight",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Rocketseat",
+    "url": "https://www.rocketseat.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Scrimba",
+    "url": "https://scrimba.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "The Odin Project",
+    "url": "https://www.theodinproject.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Treehouse",
+    "url": "https://en.wikipedia.org/wiki/Treehouse_(company)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Udacity",
+    "url": "https://en.wikipedia.org/wiki/Udacity",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "Udemy",
+    "url": "https://en.wikipedia.org/wiki/Udemy",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Cursos e plataformas de ensino",
+    "name": "W3Schools",
+    "url": "https://en.wikipedia.org/wiki/W3Schools",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Ansible",
+    "url": "https://en.wikipedia.org/wiki/Ansible_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Apache HTTP Server",
+    "url": "https://en.wikipedia.org/wiki/Apache_HTTP_Server",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Chef",
+    "url": "https://en.wikipedia.org/wiki/Progress_Chef",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "CircleCI",
+    "url": "https://en.wikipedia.org/wiki/CircleCI",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Docker",
+    "url": "https://en.wikipedia.org/wiki/Docker_(software)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Docker Swarm",
+    "url": "https://en.wikipedia.org/wiki/Docker_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "GitHub Actions",
+    "url": "https://en.wikipedia.org/wiki/GitHub#GitHub_Actions",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "GitLab CI/CD",
+    "url": "https://en.wikipedia.org/wiki/GitLab",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Grafana",
+    "url": "https://en.wikipedia.org/wiki/Grafana",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Jenkins",
+    "url": "https://en.wikipedia.org/wiki/Jenkins_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Kubernetes",
+    "url": "https://en.wikipedia.org/wiki/Kubernetes",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Nginx",
+    "url": "https://en.wikipedia.org/wiki/Nginx",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Podman",
+    "url": "https://en.wikipedia.org/wiki/Podman",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Prometheus",
+    "url": "https://en.wikipedia.org/wiki/Prometheus_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Puppet",
+    "url": "https://en.wikipedia.org/wiki/Puppet_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Terraform",
+    "url": "https://en.wikipedia.org/wiki/Terraform_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Travis CI",
+    "url": "https://en.wikipedia.org/wiki/Travis_CI",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "DevOps e contêineres",
+    "name": "Vagrant",
+    "url": "https://en.wikipedia.org/wiki/Vagrant_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Awesome Lists",
+    "url": "https://github.com/sindresorhus/awesome",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Big-O Cheat Sheet",
+    "url": "https://www.bigocheatsheet.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Can I use",
+    "url": "https://caniuse.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "cheat.sh",
+    "url": "https://cheat.sh/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "DevDocs",
+    "url": "https://devdocs.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Explain Shell",
+    "url": "https://explainshell.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "GeeksforGeeks",
+    "url": "https://www.geeksforgeeks.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "MDN Web Docs",
+    "url": "https://en.wikipedia.org/wiki/MDN_Web_Docs",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Microsoft Learn",
+    "url": "https://en.wikipedia.org/wiki/Microsoft_Learn",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Python Docs",
+    "url": "https://docs.python.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Refactoring.Guru",
+    "url": "https://refactoring.guru/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Roadmap.sh",
+    "url": "https://roadmap.sh/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "Rosetta Code",
+    "url": "https://en.wikipedia.org/wiki/Rosetta_Code",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Documentação e referência",
+    "name": "The Missing Semester (MIT)",
+    "url": "https://missing.csail.mit.edu/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Adobe Dreamweaver",
+    "url": "https://en.wikipedia.org/wiki/Adobe_Dreamweaver",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Android Studio",
+    "url": "https://en.wikipedia.org/wiki/Android_Studio",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Atom",
+    "url": "https://en.wikipedia.org/wiki/Atom_(text_editor)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Borland Turbo Pascal",
+    "url": "https://en.wikipedia.org/wiki/Turbo_Pascal",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Brackets",
+    "url": "https://en.wikipedia.org/wiki/Brackets_(text_editor)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Code::Blocks",
+    "url": "https://en.wikipedia.org/wiki/Code::Blocks",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Cursor",
+    "url": "https://en.wikipedia.org/wiki/Cursor_(code_editor)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Eclipse",
+    "url": "https://en.wikipedia.org/wiki/Eclipse_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Emacs",
+    "url": "https://en.wikipedia.org/wiki/Emacs",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "GNU nano",
+    "url": "https://en.wikipedia.org/wiki/GNU_nano",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "IntelliJ IDEA",
+    "url": "https://en.wikipedia.org/wiki/IntelliJ_IDEA",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "JupyterLab",
+    "url": "https://en.wikipedia.org/wiki/Project_Jupyter",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Neovim",
+    "url": "https://neovim.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "NetBeans",
+    "url": "https://en.wikipedia.org/wiki/NetBeans",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Notepad++",
+    "url": "https://en.wikipedia.org/wiki/Notepad%2B%2B",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "PyCharm",
+    "url": "https://en.wikipedia.org/wiki/PyCharm",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "RStudio",
+    "url": "https://en.wikipedia.org/wiki/RStudio",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Sublime Text",
+    "url": "https://en.wikipedia.org/wiki/Sublime_Text",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Vim",
+    "url": "https://en.wikipedia.org/wiki/Vim_(text_editor)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Visual Studio",
+    "url": "https://en.wikipedia.org/wiki/Visual_Studio",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Visual Studio Code",
+    "url": "https://en.wikipedia.org/wiki/Visual_Studio_Code",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "WebStorm",
+    "url": "https://en.wikipedia.org/wiki/JetBrains#Products",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Xcode",
+    "url": "https://en.wikipedia.org/wiki/Xcode",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores e IDEs",
+    "name": "Zed",
+    "url": "https://zed.dev/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "CodePen",
+    "url": "https://en.wikipedia.org/wiki/CodePen",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "CodeSandbox",
+    "url": "https://codesandbox.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "GitHub Codespaces",
+    "url": "https://github.com/features/codespaces",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "Glitch",
+    "url": "https://en.wikipedia.org/wiki/Glitch.com",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "Google Colab",
+    "url": "https://colab.research.google.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "JSFiddle",
+    "url": "https://en.wikipedia.org/wiki/JSFiddle",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "Kaggle Notebooks",
+    "url": "https://en.wikipedia.org/wiki/Kaggle",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "OneCompiler",
+    "url": "https://onecompiler.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "Python Tutor",
+    "url": "https://pythontutor.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "Regex101",
+    "url": "https://regex101.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "Replit",
+    "url": "https://en.wikipedia.org/wiki/Replit",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Editores online e playgrounds",
+    "name": "StackBlitz",
+    "url": "https://stackblitz.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Adobe",
+    "url": "https://en.wikipedia.org/wiki/Adobe_Inc.",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Amazon",
+    "url": "https://en.wikipedia.org/wiki/Amazon_(company)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "AMD",
+    "url": "https://en.wikipedia.org/wiki/AMD",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Anthropic",
+    "url": "https://en.wikipedia.org/wiki/Anthropic",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Apple",
+    "url": "https://en.wikipedia.org/wiki/Apple_Inc.",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Bell Labs",
+    "url": "https://en.wikipedia.org/wiki/Bell_Labs",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Borland",
+    "url": "https://en.wikipedia.org/wiki/Borland",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Canonical",
+    "url": "https://en.wikipedia.org/wiki/Canonical_(company)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Commodore",
+    "url": "https://en.wikipedia.org/wiki/Commodore_International",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Digital Equipment Corporation",
+    "url": "https://en.wikipedia.org/wiki/Digital_Equipment_Corporation",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "GitHub",
+    "url": "https://en.wikipedia.org/wiki/GitHub",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Google",
+    "url": "https://en.wikipedia.org/wiki/Google",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "IBM",
+    "url": "https://en.wikipedia.org/wiki/IBM",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Intel",
+    "url": "https://en.wikipedia.org/wiki/Intel",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "JetBrains",
+    "url": "https://en.wikipedia.org/wiki/JetBrains",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Meta",
+    "url": "https://en.wikipedia.org/wiki/Meta_Platforms",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Microsoft",
+    "url": "https://en.wikipedia.org/wiki/Microsoft",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Netscape",
+    "url": "https://en.wikipedia.org/wiki/Netscape",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Nvidia",
+    "url": "https://en.wikipedia.org/wiki/Nvidia",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "OpenAI",
+    "url": "https://en.wikipedia.org/wiki/OpenAI",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Oracle",
+    "url": "https://en.wikipedia.org/wiki/Oracle_Corporation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Red Hat",
+    "url": "https://en.wikipedia.org/wiki/Red_Hat",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Sun Microsystems",
+    "url": "https://en.wikipedia.org/wiki/Sun_Microsystems",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Empresas fundamentais",
+    "name": "Xerox PARC",
+    "url": "https://en.wikipedia.org/wiki/PARC_(company)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Array (vetor)",
+    "url": "https://en.wikipedia.org/wiki/Array_(data_structure)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Conjunto",
+    "url": "https://en.wikipedia.org/wiki/Set_(abstract_data_type)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Deque",
+    "url": "https://en.wikipedia.org/wiki/Double-ended_queue",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Dicionário (array associativo)",
+    "url": "https://en.wikipedia.org/wiki/Associative_array",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Fila",
+    "url": "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Fila de prioridade",
+    "url": "https://en.wikipedia.org/wiki/Priority_queue",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Filtro de Bloom",
+    "url": "https://en.wikipedia.org/wiki/Bloom_filter",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Grafo",
+    "url": "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Heap",
+    "url": "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Lista ligada",
+    "url": "https://en.wikipedia.org/wiki/Linked_list",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Matriz",
+    "url": "https://en.wikipedia.org/wiki/Matrix_(mathematics)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Pilha",
+    "url": "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "String",
+    "url": "https://en.wikipedia.org/wiki/String_(computer_science)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Tabela hash",
+    "url": "https://en.wikipedia.org/wiki/Hash_table",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Trie",
+    "url": "https://en.wikipedia.org/wiki/Trie",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Tupla",
+    "url": "https://en.wikipedia.org/wiki/Tuple",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Árvore",
+    "url": "https://en.wikipedia.org/wiki/Tree_(abstract_data_type)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Árvore B",
+    "url": "https://en.wikipedia.org/wiki/B-tree",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Árvore binária",
+    "url": "https://en.wikipedia.org/wiki/Binary_tree",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estruturas de dados",
+    "name": "Árvore binária de busca",
+    "url": "https://en.wikipedia.org/wiki/Binary_search_tree",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Aaron Swartz",
+    "url": "https://en.wikipedia.org/wiki/Aaron_Swartz",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Ada Lovelace",
+    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+    "description": "",
+    "tags": [],
+    "featured": true,
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Adele Goldberg",
+    "url": "https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Alan Kay",
+    "url": "https://en.wikipedia.org/wiki/Alan_Kay",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Alan Turing",
+    "url": "https://en.wikipedia.org/wiki/Alan_Turing",
+    "description": "",
+    "tags": [],
+    "featured": true,
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Anders Hejlsberg",
+    "url": "https://en.wikipedia.org/wiki/Anders_Hejlsberg",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Andrew S. Tanenbaum",
+    "url": "https://en.wikipedia.org/wiki/Andrew_S._Tanenbaum",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Barbara Liskov",
+    "url": "https://en.wikipedia.org/wiki/Barbara_Liskov",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Bill Gates",
+    "url": "https://en.wikipedia.org/wiki/Bill_Gates",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Bjarne Stroustrup",
+    "url": "https://en.wikipedia.org/wiki/Bjarne_Stroustrup",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Brendan Eich",
+    "url": "https://en.wikipedia.org/wiki/Brendan_Eich",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Brian Kernighan",
+    "url": "https://en.wikipedia.org/wiki/Brian_Kernighan",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Charles Babbage",
+    "url": "https://en.wikipedia.org/wiki/Charles_Babbage",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Chris Lattner",
+    "url": "https://en.wikipedia.org/wiki/Chris_Lattner",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Claude Shannon",
+    "url": "https://en.wikipedia.org/wiki/Claude_Shannon",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Dennis Ritchie",
+    "url": "https://en.wikipedia.org/wiki/Dennis_Ritchie",
+    "description": "",
+    "tags": [],
+    "featured": true,
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Donald Knuth",
+    "url": "https://en.wikipedia.org/wiki/Donald_Knuth",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Douglas Engelbart",
+    "url": "https://en.wikipedia.org/wiki/Douglas_Engelbart",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Edsger W. Dijkstra",
+    "url": "https://en.wikipedia.org/wiki/Edsger_W._Dijkstra",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Frances Allen",
+    "url": "https://en.wikipedia.org/wiki/Frances_Allen",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "George Boole",
+    "url": "https://en.wikipedia.org/wiki/George_Boole",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Grace Hopper",
+    "url": "https://en.wikipedia.org/wiki/Grace_Hopper",
+    "description": "",
+    "tags": [],
+    "featured": true,
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Guido van Rossum",
+    "url": "https://en.wikipedia.org/wiki/Guido_van_Rossum",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "James Gosling",
+    "url": "https://en.wikipedia.org/wiki/James_Gosling",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Jean Sammet",
+    "url": "https://en.wikipedia.org/wiki/Jean_E._Sammet",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Joe Armstrong",
+    "url": "https://en.wikipedia.org/wiki/Joe_Armstrong_(programmer)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "John Backus",
+    "url": "https://en.wikipedia.org/wiki/John_Backus",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "John McCarthy",
+    "url": "https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "John von Neumann",
+    "url": "https://en.wikipedia.org/wiki/John_von_Neumann",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "José Valim",
+    "url": "https://en.wikipedia.org/wiki/Jos%C3%A9_Valim",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Kathleen Booth",
+    "url": "https://en.wikipedia.org/wiki/Kathleen_Booth",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Ken Thompson",
+    "url": "https://en.wikipedia.org/wiki/Ken_Thompson",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Kent Beck",
+    "url": "https://en.wikipedia.org/wiki/Kent_Beck",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Konrad Zuse",
+    "url": "https://en.wikipedia.org/wiki/Konrad_Zuse",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Kristen Nygaard",
+    "url": "https://en.wikipedia.org/wiki/Kristen_Nygaard",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Larry Tesler",
+    "url": "https://en.wikipedia.org/wiki/Larry_Tesler",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Larry Wall",
+    "url": "https://en.wikipedia.org/wiki/Larry_Wall",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Linus Torvalds",
+    "url": "https://en.wikipedia.org/wiki/Linus_Torvalds",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Margaret Hamilton",
+    "url": "https://en.wikipedia.org/wiki/Margaret_Hamilton_(software_engineer)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Martin Fowler",
+    "url": "https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Niklaus Wirth",
+    "url": "https://en.wikipedia.org/wiki/Niklaus_Wirth",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Ole-Johan Dahl",
+    "url": "https://en.wikipedia.org/wiki/Ole-Johan_Dahl",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Paul Allen",
+    "url": "https://en.wikipedia.org/wiki/Paul_Allen",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Rasmus Lerdorf",
+    "url": "https://en.wikipedia.org/wiki/Rasmus_Lerdorf",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Richard Stallman",
+    "url": "https://en.wikipedia.org/wiki/Richard_Stallman",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Robert C. Martin",
+    "url": "https://en.wikipedia.org/wiki/Robert_C._Martin",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Roberto Ierusalimschy",
+    "url": "https://en.wikipedia.org/wiki/Roberto_Ierusalimschy",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Ryan Dahl",
+    "url": "https://en.wikipedia.org/wiki/Ryan_Dahl",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Seymour Papert",
+    "url": "https://en.wikipedia.org/wiki/Seymour_Papert",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Steve Wozniak",
+    "url": "https://en.wikipedia.org/wiki/Steve_Wozniak",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Tim Berners-Lee",
+    "url": "https://en.wikipedia.org/wiki/Tim_Berners-Lee",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Tony Hoare",
+    "url": "https://en.wikipedia.org/wiki/Tony_Hoare",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Vint Cerf",
+    "url": "https://en.wikipedia.org/wiki/Vint_Cerf",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Yukihiro Matsumoto",
+    "url": "https://en.wikipedia.org/wiki/Yukihiro_Matsumoto",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "7z",
+    "url": "https://en.wikipedia.org/wiki/7z",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "ARJ",
+    "url": "https://en.wikipedia.org/wiki/ARJ",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "Brotli",
+    "url": "https://en.wikipedia.org/wiki/Brotli",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "bzip2",
+    "url": "https://en.wikipedia.org/wiki/Bzip2",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "DEFLATE",
+    "url": "https://en.wikipedia.org/wiki/Deflate",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "gzip",
+    "url": "https://en.wikipedia.org/wiki/Gzip",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "ISO",
+    "url": "https://en.wikipedia.org/wiki/Optical_disc_image",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "RAR",
+    "url": "https://en.wikipedia.org/wiki/RAR_(file_format)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "tar",
+    "url": "https://en.wikipedia.org/wiki/Tar_(computing)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "xz",
+    "url": "https://en.wikipedia.org/wiki/XZ_Utils",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "ZIP",
+    "url": "https://en.wikipedia.org/wiki/ZIP_(file_format)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de compactação",
+    "name": "Zstandard",
+    "url": "https://en.wikipedia.org/wiki/Zstd",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "Apache Avro",
+    "url": "https://en.wikipedia.org/wiki/Apache_Avro",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "Apache Parquet",
+    "url": "https://en.wikipedia.org/wiki/Apache_Parquet",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "Apache Thrift",
+    "url": "https://en.wikipedia.org/wiki/Apache_Thrift",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "Atom",
+    "url": "https://en.wikipedia.org/wiki/Atom_(web_standard)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "BSON",
+    "url": "https://en.wikipedia.org/wiki/BSON",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "CBOR",
+    "url": "https://en.wikipedia.org/wiki/CBOR",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "CSV",
+    "url": "https://en.wikipedia.org/wiki/Comma-separated_values",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "GeoJSON",
+    "url": "https://en.wikipedia.org/wiki/GeoJSON",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "HDF5",
+    "url": "https://en.wikipedia.org/wiki/Hierarchical_Data_Format",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "iCalendar",
+    "url": "https://en.wikipedia.org/wiki/ICalendar",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "INI",
+    "url": "https://en.wikipedia.org/wiki/INI_file",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "JSON",
+    "url": "https://en.wikipedia.org/wiki/JSON",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "JSON-LD",
+    "url": "https://en.wikipedia.org/wiki/JSON-LD",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "MessagePack",
+    "url": "https://en.wikipedia.org/wiki/MessagePack",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "NDJSON",
+    "url": "https://en.wikipedia.org/wiki/JSON_streaming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "Protocol Buffers",
+    "url": "https://en.wikipedia.org/wiki/Protocol_Buffers",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "RSS",
+    "url": "https://en.wikipedia.org/wiki/RSS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "S-expression",
+    "url": "https://en.wikipedia.org/wiki/S-expression",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "SQLite (arquivo)",
+    "url": "https://en.wikipedia.org/wiki/SQLite",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "TOML",
+    "url": "https://en.wikipedia.org/wiki/TOML",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "TSV",
+    "url": "https://en.wikipedia.org/wiki/Tab-separated_values",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "vCard",
+    "url": "https://en.wikipedia.org/wiki/VCard",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "XML",
+    "url": "https://en.wikipedia.org/wiki/XML",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de dados",
+    "name": "YAML",
+    "url": "https://en.wikipedia.org/wiki/YAML",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "DjVu",
+    "url": "https://en.wikipedia.org/wiki/DjVu",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "DOC",
+    "url": "https://en.wikipedia.org/wiki/Doc_(computing)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "DOCX",
+    "url": "https://en.wikipedia.org/wiki/Office_Open_XML",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "EPUB",
+    "url": "https://en.wikipedia.org/wiki/EPUB",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "LIT (Microsoft Reader)",
+    "url": "https://en.wikipedia.org/wiki/Microsoft_Reader",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "MOBI",
+    "url": "https://en.wikipedia.org/wiki/Mobipocket",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "ODF (OpenDocument)",
+    "url": "https://en.wikipedia.org/wiki/OpenDocument",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "Pages",
+    "url": "https://en.wikipedia.org/wiki/Pages_(word_processor)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "PDF",
+    "url": "https://en.wikipedia.org/wiki/PDF",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "PostScript",
+    "url": "https://en.wikipedia.org/wiki/PostScript",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "PPTX",
+    "url": "https://en.wikipedia.org/wiki/Office_Open_XML",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "RTF",
+    "url": "https://en.wikipedia.org/wiki/Rich_Text_Format",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "TXT",
+    "url": "https://en.wikipedia.org/wiki/Plain_text",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "WordPerfect",
+    "url": "https://en.wikipedia.org/wiki/WordPerfect",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "XLSX",
+    "url": "https://en.wikipedia.org/wiki/Office_Open_XML",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de documento",
+    "name": "XPS",
+    "url": "https://en.wikipedia.org/wiki/Open_XML_Paper_Specification",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de fonte",
+    "name": "EOT",
+    "url": "https://en.wikipedia.org/wiki/Embedded_OpenType",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de fonte",
+    "name": "Font Awesome",
+    "url": "https://en.wikipedia.org/wiki/Font_Awesome",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de fonte",
+    "name": "Fontes variáveis",
+    "url": "https://en.wikipedia.org/wiki/Variable_font",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de fonte",
+    "name": "OTF (OpenType)",
+    "url": "https://en.wikipedia.org/wiki/OpenType",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de fonte",
+    "name": "PostScript Type 1",
+    "url": "https://en.wikipedia.org/wiki/PostScript_fonts#Type_1",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de fonte",
+    "name": "TTF (TrueType)",
+    "url": "https://en.wikipedia.org/wiki/TrueType",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de fonte",
+    "name": "WOFF",
+    "url": "https://en.wikipedia.org/wiki/Web_Open_Font_Format",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de fonte",
+    "name": "WOFF2",
+    "url": "https://en.wikipedia.org/wiki/Web_Open_Font_Format",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "APNG",
+    "url": "https://en.wikipedia.org/wiki/APNG",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "AVIF",
+    "url": "https://en.wikipedia.org/wiki/AVIF",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "BMP",
+    "url": "https://en.wikipedia.org/wiki/BMP_file_format",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "EPS",
+    "url": "https://en.wikipedia.org/wiki/Encapsulated_PostScript",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "GIF",
+    "url": "https://en.wikipedia.org/wiki/GIF",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "HEIF e HEIC",
+    "url": "https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "ICO",
+    "url": "https://en.wikipedia.org/wiki/ICO_(file_format)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "JPEG",
+    "url": "https://en.wikipedia.org/wiki/JPEG",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "JPEG 2000",
+    "url": "https://en.wikipedia.org/wiki/JPEG_2000",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "JPEG XL",
+    "url": "https://en.wikipedia.org/wiki/JPEG_XL",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "OpenEXR",
+    "url": "https://en.wikipedia.org/wiki/OpenEXR",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "PCX",
+    "url": "https://en.wikipedia.org/wiki/PCX",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "PNG",
+    "url": "https://en.wikipedia.org/wiki/PNG",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "PSD",
+    "url": "https://en.wikipedia.org/wiki/Adobe_Photoshop#File_format",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "QOI",
+    "url": "https://en.wikipedia.org/wiki/QOI_(image_format)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "RAW",
+    "url": "https://en.wikipedia.org/wiki/Raw_image_format",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "SVG",
+    "url": "https://en.wikipedia.org/wiki/SVG",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "TGA",
+    "url": "https://en.wikipedia.org/wiki/Truevision_TGA",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "TIFF",
+    "url": "https://en.wikipedia.org/wiki/TIFF",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "WBMP",
+    "url": "https://en.wikipedia.org/wiki/Wireless_Application_Protocol_Bitmap_Format",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de imagem",
+    "name": "WebP",
+    "url": "https://en.wikipedia.org/wiki/WebP",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "AAC",
+    "url": "https://en.wikipedia.org/wiki/Advanced_Audio_Coding",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "AV1",
+    "url": "https://en.wikipedia.org/wiki/AV1",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "AVI",
+    "url": "https://en.wikipedia.org/wiki/Audio_Video_Interleave",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "FLAC",
+    "url": "https://en.wikipedia.org/wiki/FLAC",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "FLV (Flash Video)",
+    "url": "https://en.wikipedia.org/wiki/Flash_Video",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "H.264",
+    "url": "https://en.wikipedia.org/wiki/Advanced_Video_Coding",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "H.265 (HEVC)",
+    "url": "https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "MIDI",
+    "url": "https://en.wikipedia.org/wiki/MIDI",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "MKV (Matroska)",
+    "url": "https://en.wikipedia.org/wiki/Matroska",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "MOV (QuickTime)",
+    "url": "https://en.wikipedia.org/wiki/QuickTime_File_Format",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "MP3",
+    "url": "https://en.wikipedia.org/wiki/MP3",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "MP4",
+    "url": "https://en.wikipedia.org/wiki/MP4_file_format",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "Ogg",
+    "url": "https://en.wikipedia.org/wiki/Ogg",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "Opus",
+    "url": "https://en.wikipedia.org/wiki/Opus_(audio_format)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "RealMedia",
+    "url": "https://en.wikipedia.org/wiki/RealMedia",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "SWF (Flash)",
+    "url": "https://en.wikipedia.org/wiki/SWF",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "VP9",
+    "url": "https://en.wikipedia.org/wiki/VP9",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "WAV",
+    "url": "https://en.wikipedia.org/wiki/WAV",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Formatos de áudio e vídeo",
+    "name": "WebM",
+    "url": "https://en.wikipedia.org/wiki/WebM",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": ".NET",
+    "url": "https://en.wikipedia.org/wiki/.NET",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Adobe Flex",
+    "url": "https://en.wikipedia.org/wiki/Apache_Flex",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Angular",
+    "url": "https://en.wikipedia.org/wiki/Angular_(web_framework)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "AngularJS",
+    "url": "https://en.wikipedia.org/wiki/AngularJS",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "ASP.NET",
+    "url": "https://en.wikipedia.org/wiki/ASP.NET",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Astro",
+    "url": "https://astro.build/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Backbone.js",
+    "url": "https://en.wikipedia.org/wiki/Backbone.js",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Bootstrap",
+    "url": "https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Bun",
+    "url": "https://en.wikipedia.org/wiki/Bun_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "D3.js",
+    "url": "https://en.wikipedia.org/wiki/D3.js",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Deno",
+    "url": "https://en.wikipedia.org/wiki/Deno_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Django",
+    "url": "https://en.wikipedia.org/wiki/Django_(web_framework)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Electron",
+    "url": "https://en.wikipedia.org/wiki/Electron_(software_framework)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Express.js",
+    "url": "https://en.wikipedia.org/wiki/Express.js",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "FastAPI",
+    "url": "https://en.wikipedia.org/wiki/FastAPI",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Flask",
+    "url": "https://en.wikipedia.org/wiki/Flask_(web_framework)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Flutter",
+    "url": "https://en.wikipedia.org/wiki/Flutter_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "jQuery",
+    "url": "https://en.wikipedia.org/wiki/JQuery",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Laravel",
+    "url": "https://en.wikipedia.org/wiki/Laravel",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Next.js",
+    "url": "https://en.wikipedia.org/wiki/Next.js",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Node.js",
+    "url": "https://en.wikipedia.org/wiki/Node.js",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Nuxt",
+    "url": "https://en.wikipedia.org/wiki/Nuxt.js",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Qt",
+    "url": "https://en.wikipedia.org/wiki/Qt_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "React",
+    "url": "https://en.wikipedia.org/wiki/React_(software)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "React Native",
+    "url": "https://en.wikipedia.org/wiki/React_Native",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Ruby on Rails",
+    "url": "https://en.wikipedia.org/wiki/Ruby_on_Rails",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Spring",
+    "url": "https://en.wikipedia.org/wiki/Spring_Framework",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Svelte",
+    "url": "https://en.wikipedia.org/wiki/Svelte",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Symfony",
+    "url": "https://en.wikipedia.org/wiki/Symfony",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Tailwind CSS",
+    "url": "https://en.wikipedia.org/wiki/Tailwind_CSS",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Three.js",
+    "url": "https://en.wikipedia.org/wiki/Three.js",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Frameworks e bibliotecas",
+    "name": "Vue.js",
+    "url": "https://en.wikipedia.org/wiki/Vue.js",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "APT",
+    "url": "https://en.wikipedia.org/wiki/APT_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Bower",
+    "url": "https://bower.io/",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Cargo",
+    "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)#Cargo",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Chocolatey",
+    "url": "https://en.wikipedia.org/wiki/Chocolatey",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "CocoaPods",
+    "url": "https://en.wikipedia.org/wiki/CocoaPods",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Composer",
+    "url": "https://en.wikipedia.org/wiki/Composer_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Conda",
+    "url": "https://en.wikipedia.org/wiki/Conda_(package_manager)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "CPAN",
+    "url": "https://en.wikipedia.org/wiki/CPAN",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Flatpak",
+    "url": "https://en.wikipedia.org/wiki/Flatpak",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Gradle",
+    "url": "https://en.wikipedia.org/wiki/Gradle",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Homebrew",
+    "url": "https://en.wikipedia.org/wiki/Homebrew_(package_manager)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Maven",
+    "url": "https://en.wikipedia.org/wiki/Apache_Maven",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "npm",
+    "url": "https://en.wikipedia.org/wiki/Npm",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "NuGet",
+    "url": "https://en.wikipedia.org/wiki/NuGet",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "pip",
+    "url": "https://en.wikipedia.org/wiki/Pip_(package_manager)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "pnpm",
+    "url": "https://pnpm.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "PyPI",
+    "url": "https://en.wikipedia.org/wiki/Python_Package_Index",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "RubyGems",
+    "url": "https://en.wikipedia.org/wiki/RubyGems",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Snap",
+    "url": "https://en.wikipedia.org/wiki/Snap_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "winget",
+    "url": "https://en.wikipedia.org/wiki/Windows_Package_Manager",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "Yarn",
+    "url": "https://en.wikipedia.org/wiki/Yarn_(package_manager)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "AGPL",
+    "url": "https://en.wikipedia.org/wiki/GNU_Affero_General_Public_License",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "Apache 2.0",
+    "url": "https://en.wikipedia.org/wiki/Apache_License",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Licenças de software",
+    "name": "BSD",
+    "url": "https://en.wikipedia.org/wiki/BSD_licenses",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "CC0",
+    "url": "https://en.wikipedia.org/wiki/CC0",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "Creative Commons",
+    "url": "https://en.wikipedia.org/wiki/Creative_Commons_license",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "Código aberto",
+    "url": "https://en.wikipedia.org/wiki/Open-source_software",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "Domínio público",
+    "url": "https://en.wikipedia.org/wiki/Public-domain_software",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "EULA",
+    "url": "https://en.wikipedia.org/wiki/End-user_license_agreement",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "GPL",
+    "url": "https://en.wikipedia.org/wiki/GNU_General_Public_License",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Licenças de software",
+    "name": "LGPL",
+    "url": "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "MIT",
+    "url": "https://en.wikipedia.org/wiki/MIT_License",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Licenças de software",
+    "name": "MPL",
+    "url": "https://en.wikipedia.org/wiki/Mozilla_Public_License",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "Software livre",
+    "url": "https://en.wikipedia.org/wiki/Free_software",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "Software proprietário",
+    "url": "https://en.wikipedia.org/wiki/Proprietary_software",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Licenças de software",
+    "name": "Unlicense",
+    "url": "https://en.wikipedia.org/wiki/Unlicense",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "Cypher",
+    "url": "https://en.wikipedia.org/wiki/Cypher_(query_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "Datalog",
+    "url": "https://en.wikipedia.org/wiki/Datalog",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "GraphQL",
+    "url": "https://en.wikipedia.org/wiki/GraphQL",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "jq",
+    "url": "https://en.wikipedia.org/wiki/Jq_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "LINQ",
+    "url": "https://en.wikipedia.org/wiki/Language_Integrated_Query",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "PromQL",
+    "url": "https://prometheus.io/docs/prometheus/latest/querying/basics/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "QUEL",
+    "url": "https://en.wikipedia.org/wiki/QUEL_query_languages",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "SPARQL",
+    "url": "https://en.wikipedia.org/wiki/SPARQL",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "SQL",
+    "url": "https://en.wikipedia.org/wiki/SQL",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "XPath",
+    "url": "https://en.wikipedia.org/wiki/XPath",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de consulta",
+    "name": "XQuery",
+    "url": "https://en.wikipedia.org/wiki/XQuery",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "CSS",
+    "url": "https://en.wikipedia.org/wiki/CSS",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "DSSSL",
+    "url": "https://en.wikipedia.org/wiki/Document_Style_Semantics_and_Specification_Language",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "JSSS",
+    "url": "https://en.wikipedia.org/wiki/JavaScript_Style_Sheets",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "Less",
+    "url": "https://en.wikipedia.org/wiki/Less_(style_sheet_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "PostCSS",
+    "url": "https://en.wikipedia.org/wiki/PostCSS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "Sass",
+    "url": "https://en.wikipedia.org/wiki/Sass_(style_sheet_language)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "Stylus",
+    "url": "https://en.wikipedia.org/wiki/Stylus_(style_sheet_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "XSL-FO",
+    "url": "https://en.wikipedia.org/wiki/XSL_Formatting_Objects",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de estilo",
+    "name": "XSLT",
+    "url": "https://en.wikipedia.org/wiki/XSLT",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "AsciiDoc",
+    "url": "https://en.wikipedia.org/wiki/AsciiDoc",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "BBCode",
+    "url": "https://en.wikipedia.org/wiki/BBCode",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "DocBook",
+    "url": "https://en.wikipedia.org/wiki/DocBook",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "HTML",
+    "url": "https://en.wikipedia.org/wiki/HTML",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "JSX",
+    "url": "https://en.wikipedia.org/wiki/JSX_(JavaScript)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "LaTeX",
+    "url": "https://en.wikipedia.org/wiki/LaTeX",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "Markdown",
+    "url": "https://en.wikipedia.org/wiki/Markdown",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "MathML",
+    "url": "https://en.wikipedia.org/wiki/MathML",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "MDX",
+    "url": "https://mdxjs.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "Org-mode",
+    "url": "https://en.wikipedia.org/wiki/Org-mode",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "reStructuredText",
+    "url": "https://en.wikipedia.org/wiki/ReStructuredText",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "SGML",
+    "url": "https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "SVG",
+    "url": "https://en.wikipedia.org/wiki/SVG",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "TeX",
+    "url": "https://en.wikipedia.org/wiki/TeX",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "Typst",
+    "url": "https://en.wikipedia.org/wiki/Typst",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "VRML",
+    "url": "https://en.wikipedia.org/wiki/VRML",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "Wikitexto",
+    "url": "https://en.wikipedia.org/wiki/Help:Wikitext",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "WML",
+    "url": "https://en.wikipedia.org/wiki/Wireless_Markup_Language",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "XHTML",
+    "url": "https://en.wikipedia.org/wiki/XHTML",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "XML",
+    "url": "https://en.wikipedia.org/wiki/XML",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de marcação",
+    "name": "YAML",
+    "url": "https://en.wikipedia.org/wiki/YAML",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "ABAP",
+    "url": "https://en.wikipedia.org/wiki/ABAP",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "ActionScript",
+    "url": "https://en.wikipedia.org/wiki/ActionScript",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Ada",
+    "url": "https://en.wikipedia.org/wiki/Ada_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "ALGOL",
+    "url": "https://en.wikipedia.org/wiki/ALGOL",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "APL",
+    "url": "https://en.wikipedia.org/wiki/APL_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Assembly",
+    "url": "https://en.wikipedia.org/wiki/Assembly_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "AWK",
+    "url": "https://en.wikipedia.org/wiki/AWK",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "B",
+    "url": "https://en.wikipedia.org/wiki/B_(programming_language)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Bash",
+    "url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "BASIC",
+    "url": "https://en.wikipedia.org/wiki/BASIC",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "BCPL",
+    "url": "https://en.wikipedia.org/wiki/BCPL",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "C",
+    "url": "https://en.wikipedia.org/wiki/C_(programming_language)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "C#",
+    "url": "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "C++",
+    "url": "https://en.wikipedia.org/wiki/C%2B%2B",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Clojure",
+    "url": "https://en.wikipedia.org/wiki/Clojure",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "COBOL",
+    "url": "https://en.wikipedia.org/wiki/COBOL",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "CoffeeScript",
+    "url": "https://en.wikipedia.org/wiki/CoffeeScript",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Common Lisp",
+    "url": "https://en.wikipedia.org/wiki/Common_Lisp",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Crystal",
+    "url": "https://en.wikipedia.org/wiki/Crystal_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "D",
+    "url": "https://en.wikipedia.org/wiki/D_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Dart",
+    "url": "https://en.wikipedia.org/wiki/Dart_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Delphi",
+    "url": "https://en.wikipedia.org/wiki/Delphi_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Eiffel",
+    "url": "https://en.wikipedia.org/wiki/Eiffel_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Elixir",
+    "url": "https://en.wikipedia.org/wiki/Elixir_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Elm",
+    "url": "https://en.wikipedia.org/wiki/Elm_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Erlang",
+    "url": "https://en.wikipedia.org/wiki/Erlang_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "F#",
+    "url": "https://en.wikipedia.org/wiki/F_Sharp_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "FLOW-MATIC",
+    "url": "https://en.wikipedia.org/wiki/FLOW-MATIC",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Forth",
+    "url": "https://en.wikipedia.org/wiki/Forth_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Fortran",
+    "url": "https://en.wikipedia.org/wiki/Fortran",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Gleam",
+    "url": "https://en.wikipedia.org/wiki/Gleam_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Go",
+    "url": "https://en.wikipedia.org/wiki/Go_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Groovy",
+    "url": "https://en.wikipedia.org/wiki/Apache_Groovy",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Hack",
+    "url": "https://en.wikipedia.org/wiki/Hack_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Haskell",
+    "url": "https://en.wikipedia.org/wiki/Haskell",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Haxe",
+    "url": "https://en.wikipedia.org/wiki/Haxe",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Java",
+    "url": "https://en.wikipedia.org/wiki/Java_(programming_language)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "JavaScript",
+    "url": "https://en.wikipedia.org/wiki/JavaScript",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Julia",
+    "url": "https://en.wikipedia.org/wiki/Julia_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Kotlin",
+    "url": "https://en.wikipedia.org/wiki/Kotlin_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Lisp",
+    "url": "https://en.wikipedia.org/wiki/Lisp_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Lua",
+    "url": "https://en.wikipedia.org/wiki/Lua",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "MATLAB",
+    "url": "https://en.wikipedia.org/wiki/MATLAB",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Modula-2",
+    "url": "https://en.wikipedia.org/wiki/Modula-2",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Mojo",
+    "url": "https://en.wikipedia.org/wiki/Mojo_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Nim",
+    "url": "https://en.wikipedia.org/wiki/Nim_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Objective-C",
+    "url": "https://en.wikipedia.org/wiki/Objective-C",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "OCaml",
+    "url": "https://en.wikipedia.org/wiki/OCaml",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Pascal",
+    "url": "https://en.wikipedia.org/wiki/Pascal_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Perl",
+    "url": "https://en.wikipedia.org/wiki/Perl",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "PHP",
+    "url": "https://en.wikipedia.org/wiki/PHP",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "PL/I",
+    "url": "https://en.wikipedia.org/wiki/PL/I",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Plankalkül",
+    "url": "https://en.wikipedia.org/wiki/Plankalk%C3%BCl",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "PowerShell",
+    "url": "https://en.wikipedia.org/wiki/PowerShell",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Prolog",
+    "url": "https://en.wikipedia.org/wiki/Prolog",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Python",
+    "url": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "R",
+    "url": "https://en.wikipedia.org/wiki/R_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Racket",
+    "url": "https://en.wikipedia.org/wiki/Racket_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Raku",
+    "url": "https://en.wikipedia.org/wiki/Raku_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Ruby",
+    "url": "https://en.wikipedia.org/wiki/Ruby_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Rust",
+    "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Scala",
+    "url": "https://en.wikipedia.org/wiki/Scala_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Scheme",
+    "url": "https://en.wikipedia.org/wiki/Scheme_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Shell",
+    "url": "https://en.wikipedia.org/wiki/Shell_script",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Simula",
+    "url": "https://en.wikipedia.org/wiki/Simula",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Smalltalk",
+    "url": "https://en.wikipedia.org/wiki/Smalltalk",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Solidity",
+    "url": "https://en.wikipedia.org/wiki/Solidity",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "SQL",
+    "url": "https://en.wikipedia.org/wiki/SQL",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Swift",
+    "url": "https://en.wikipedia.org/wiki/Swift_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Tcl",
+    "url": "https://en.wikipedia.org/wiki/Tcl_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "TypeScript",
+    "url": "https://en.wikipedia.org/wiki/TypeScript",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "VBA",
+    "url": "https://en.wikipedia.org/wiki/Visual_Basic_for_Applications",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "VBScript",
+    "url": "https://en.wikipedia.org/wiki/VBScript",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Visual Basic (clássico)",
+    "url": "https://en.wikipedia.org/wiki/Visual_Basic_(classic)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Visual Basic .NET",
+    "url": "https://en.wikipedia.org/wiki/Visual_Basic_(.NET)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "WebAssembly",
+    "url": "https://en.wikipedia.org/wiki/WebAssembly",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Linguagens de programação",
+    "name": "Zig",
+    "url": "https://en.wikipedia.org/wiki/Zig_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Automate the Boring Stuff with Python",
+    "url": "https://automatetheboringstuff.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Clean Code",
+    "url": "https://en.wikipedia.org/wiki/Robert_C._Martin#Clean_Code",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Code",
+    "url": "https://en.wikipedia.org/wiki/Code:_The_Hidden_Language_of_Computer_Hardware_and_Software",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Code Complete",
+    "url": "https://en.wikipedia.org/wiki/Code_Complete",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Compilers (Dragon Book)",
+    "url": "https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Cracking the Coding Interview",
+    "url": "https://en.wikipedia.org/wiki/Cracking_the_Coding_Interview",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Design Patterns",
+    "url": "https://en.wikipedia.org/wiki/Design_Patterns",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Eloquent JavaScript",
+    "url": "https://eloquentjavascript.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Gödel, Escher, Bach",
+    "url": "https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Hackers",
+    "url": "https://en.wikipedia.org/wiki/Hackers:_Heroes_of_the_Computer_Revolution",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Introduction to Algorithms",
+    "url": "https://en.wikipedia.org/wiki/Introduction_to_Algorithms",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Refactoring",
+    "url": "https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer)#Publications",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "Structure and Interpretation of Computer Programs",
+    "url": "https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Computer_Programs",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "The Art of Computer Programming",
+    "url": "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "The C Programming Language",
+    "url": "https://en.wikipedia.org/wiki/The_C_Programming_Language",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "The Cathedral and the Bazaar",
+    "url": "https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "The Mythical Man-Month",
+    "url": "https://en.wikipedia.org/wiki/The_Mythical_Man-Month",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Livros essenciais",
+    "name": "The Pragmatic Programmer",
+    "url": "https://en.wikipedia.org/wiki/The_Pragmatic_Programmer",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Amazon Web Services",
+    "url": "https://en.wikipedia.org/wiki/Amazon_Web_Services",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Cloudflare",
+    "url": "https://en.wikipedia.org/wiki/Cloudflare",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "DigitalOcean",
+    "url": "https://en.wikipedia.org/wiki/DigitalOcean",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Fly.io",
+    "url": "https://fly.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "GeoCities",
+    "url": "https://en.wikipedia.org/wiki/GeoCities",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "GitHub Pages",
+    "url": "https://en.wikipedia.org/wiki/GitHub#GitHub_Pages",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Google Cloud",
+    "url": "https://en.wikipedia.org/wiki/Google_Cloud_Platform",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Heroku",
+    "url": "https://en.wikipedia.org/wiki/Heroku",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Hostinger",
+    "url": "https://en.wikipedia.org/wiki/Hostinger",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "IBM Cloud",
+    "url": "https://en.wikipedia.org/wiki/IBM_Cloud",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Linode (Akamai)",
+    "url": "https://en.wikipedia.org/wiki/Linode",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Microsoft Azure",
+    "url": "https://en.wikipedia.org/wiki/Microsoft_Azure",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Netlify",
+    "url": "https://en.wikipedia.org/wiki/Netlify",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Oracle Cloud",
+    "url": "https://en.wikipedia.org/wiki/Oracle_Cloud",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Parse",
+    "url": "https://en.wikipedia.org/wiki/Parse,_Inc.",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Render",
+    "url": "https://render.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Nuvem e hospedagem",
+    "name": "Vercel",
+    "url": "https://en.wikipedia.org/wiki/Vercel",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "ACM",
+    "url": "https://en.wikipedia.org/wiki/Association_for_Computing_Machinery",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "Apache Software Foundation",
+    "url": "https://en.wikipedia.org/wiki/The_Apache_Software_Foundation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "ECMA International",
+    "url": "https://en.wikipedia.org/wiki/Ecma_International",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "Free Software Foundation",
+    "url": "https://en.wikipedia.org/wiki/Free_Software_Foundation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "ICANN",
+    "url": "https://en.wikipedia.org/wiki/ICANN",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "IEEE",
+    "url": "https://en.wikipedia.org/wiki/Institute_of_Electrical_and_Electronics_Engineers",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "IETF",
+    "url": "https://en.wikipedia.org/wiki/Internet_Engineering_Task_Force",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "Internet Archive",
+    "url": "https://en.wikipedia.org/wiki/Internet_Archive",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "ISO",
+    "url": "https://en.wikipedia.org/wiki/International_Organization_for_Standardization",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "Linux Foundation",
+    "url": "https://en.wikipedia.org/wiki/Linux_Foundation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "Mozilla Foundation",
+    "url": "https://en.wikipedia.org/wiki/Mozilla_Foundation",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "Open Source Initiative",
+    "url": "https://en.wikipedia.org/wiki/Open_Source_Initiative",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "OpenJS Foundation",
+    "url": "https://en.wikipedia.org/wiki/OpenJS_Foundation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "Python Software Foundation",
+    "url": "https://en.wikipedia.org/wiki/Python_Software_Foundation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "Unicode Consortium",
+    "url": "https://en.wikipedia.org/wiki/Unicode_Consortium",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "W3C",
+    "url": "https://en.wikipedia.org/wiki/World_Wide_Web_Consortium",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Organizações e padrões",
+    "name": "WHATWG",
+    "url": "https://en.wikipedia.org/wiki/WHATWG",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Metaprogramação",
+    "url": "https://en.wikipedia.org/wiki/Metaprogramming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação assíncrona",
+    "url": "https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação baseada em protótipos",
+    "url": "https://en.wikipedia.org/wiki/Prototype-based_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação concorrente",
+    "url": "https://en.wikipedia.org/wiki/Concurrent_computing",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação declarativa",
+    "url": "https://en.wikipedia.org/wiki/Declarative_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação estruturada",
+    "url": "https://en.wikipedia.org/wiki/Structured_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação funcional",
+    "url": "https://en.wikipedia.org/wiki/Functional_programming",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação genérica",
+    "url": "https://en.wikipedia.org/wiki/Generic_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação imperativa",
+    "url": "https://en.wikipedia.org/wiki/Imperative_programming",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação lógica",
+    "url": "https://en.wikipedia.org/wiki/Logic_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação orientada a aspectos",
+    "url": "https://en.wikipedia.org/wiki/Aspect-oriented_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação orientada a dados",
+    "url": "https://en.wikipedia.org/wiki/Data-oriented_design",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação orientada a eventos",
+    "url": "https://en.wikipedia.org/wiki/Event-driven_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação orientada a objetos",
+    "url": "https://en.wikipedia.org/wiki/Object-oriented_programming",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação paralela",
+    "url": "https://en.wikipedia.org/wiki/Parallel_computing",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação procedural",
+    "url": "https://en.wikipedia.org/wiki/Procedural_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Paradigmas de programação",
+    "name": "Programação reativa",
+    "url": "https://en.wikipedia.org/wiki/Reactive_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Code smell",
+    "url": "https://en.wikipedia.org/wiki/Code_smell",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Código limpo",
+    "url": "https://en.wikipedia.org/wiki/Robert_C._Martin#Clean_Code",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Desenvolvimento guiado por testes (TDD)",
+    "url": "https://en.wikipedia.org/wiki/Test-driven_development",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Desenvolvimento ágil",
+    "url": "https://en.wikipedia.org/wiki/Agile_software_development",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Documentação de software",
+    "url": "https://en.wikipedia.org/wiki/Software_documentation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "DRY",
+    "url": "https://en.wikipedia.org/wiki/Don't_repeat_yourself",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Débito técnico",
+    "url": "https://en.wikipedia.org/wiki/Technical_debt",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Entrega contínua (CD)",
+    "url": "https://en.wikipedia.org/wiki/Continuous_delivery",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Guia de estilo de código",
+    "url": "https://en.wikipedia.org/wiki/Coding_conventions",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Integração contínua (CI)",
+    "url": "https://en.wikipedia.org/wiki/Continuous_integration",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Kanban",
+    "url": "https://en.wikipedia.org/wiki/Kanban_(development)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "KISS",
+    "url": "https://en.wikipedia.org/wiki/KISS_principle",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Padrões de projeto",
+    "url": "https://en.wikipedia.org/wiki/Software_design_pattern",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Programação em par",
+    "url": "https://en.wikipedia.org/wiki/Pair_programming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Revisão de código",
+    "url": "https://en.wikipedia.org/wiki/Code_review",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Scrum",
+    "url": "https://en.wikipedia.org/wiki/Scrum_(software_development)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Separação de responsabilidades",
+    "url": "https://en.wikipedia.org/wiki/Separation_of_concerns",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "SOLID",
+    "url": "https://en.wikipedia.org/wiki/SOLID",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "Versionamento semântico",
+    "url": "https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Princípios e boas práticas",
+    "name": "YAGNI",
+    "url": "https://en.wikipedia.org/wiki/You_aren't_gonna_need_it",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Alice",
+    "url": "https://en.wikipedia.org/wiki/Alice_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Blockly",
+    "url": "https://en.wikipedia.org/wiki/Blockly",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Kodu Game Lab",
+    "url": "https://en.wikipedia.org/wiki/Kodu_Game_Lab",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "LabVIEW",
+    "url": "https://en.wikipedia.org/wiki/LabVIEW",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Lego Mindstorms",
+    "url": "https://en.wikipedia.org/wiki/Lego_Mindstorms",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Logo",
+    "url": "https://en.wikipedia.org/wiki/Logo_(programming_language)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Max/MSP",
+    "url": "https://en.wikipedia.org/wiki/Max_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "MIT App Inventor",
+    "url": "https://en.wikipedia.org/wiki/App_Inventor_for_Android",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Node-RED",
+    "url": "https://en.wikipedia.org/wiki/Node-RED",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Pure Data",
+    "url": "https://en.wikipedia.org/wiki/Pure_Data",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Scratch",
+    "url": "https://en.wikipedia.org/wiki/Scratch_(programming_language)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Snap!",
+    "url": "https://en.wikipedia.org/wiki/Snap!_(programming_language)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Programação visual e educativa",
+    "name": "Unreal Blueprints",
+    "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprints-visual-scripting-in-unreal-engine",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "ARP",
+    "url": "https://en.wikipedia.org/wiki/Address_Resolution_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "BitTorrent",
+    "url": "https://en.wikipedia.org/wiki/BitTorrent",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "DHCP",
+    "url": "https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "DNS",
+    "url": "https://en.wikipedia.org/wiki/Domain_Name_System",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "FTP",
+    "url": "https://en.wikipedia.org/wiki/File_Transfer_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "Gopher",
+    "url": "https://en.wikipedia.org/wiki/Gopher_(protocol)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "HTTP",
+    "url": "https://en.wikipedia.org/wiki/HTTP",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "HTTP/2",
+    "url": "https://en.wikipedia.org/wiki/HTTP/2",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "HTTP/3",
+    "url": "https://en.wikipedia.org/wiki/HTTP/3",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "HTTPS",
+    "url": "https://en.wikipedia.org/wiki/HTTPS",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "ICMP",
+    "url": "https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "IMAP",
+    "url": "https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "IP",
+    "url": "https://en.wikipedia.org/wiki/Internet_Protocol",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "IPv4",
+    "url": "https://en.wikipedia.org/wiki/IPv4",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "IPv6",
+    "url": "https://en.wikipedia.org/wiki/IPv6",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "IRC",
+    "url": "https://en.wikipedia.org/wiki/IRC",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "LDAP",
+    "url": "https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "Modelo OSI",
+    "url": "https://en.wikipedia.org/wiki/OSI_model",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "MQTT",
+    "url": "https://en.wikipedia.org/wiki/MQTT",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "NNTP",
+    "url": "https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "NTP",
+    "url": "https://en.wikipedia.org/wiki/Network_Time_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "POP3",
+    "url": "https://en.wikipedia.org/wiki/Post_Office_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "QUIC",
+    "url": "https://en.wikipedia.org/wiki/QUIC",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "RTMP",
+    "url": "https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "RTP",
+    "url": "https://en.wikipedia.org/wiki/Real-time_Transport_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "SFTP",
+    "url": "https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "SMTP",
+    "url": "https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "SNMP",
+    "url": "https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "SSH",
+    "url": "https://en.wikipedia.org/wiki/Secure_Shell",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "TCP",
+    "url": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "Telnet",
+    "url": "https://en.wikipedia.org/wiki/Telnet",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "TLS/SSL",
+    "url": "https://en.wikipedia.org/wiki/Transport_Layer_Security",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "UDP",
+    "url": "https://en.wikipedia.org/wiki/User_Datagram_Protocol",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "WebRTC",
+    "url": "https://en.wikipedia.org/wiki/WebRTC",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "WebSocket",
+    "url": "https://en.wikipedia.org/wiki/WebSocket",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Protocolos de transmissão",
+    "name": "XMPP",
+    "url": "https://en.wikipedia.org/wiki/XMPP",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Advent of Code",
+    "url": "https://en.wikipedia.org/wiki/Advent_of_Code",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "AtCoder",
+    "url": "https://atcoder.jp/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Beecrowd",
+    "url": "https://judge.beecrowd.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Codeforces",
+    "url": "https://en.wikipedia.org/wiki/Codeforces",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Codewars",
+    "url": "https://en.wikipedia.org/wiki/Codewars",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "CodinGame",
+    "url": "https://en.wikipedia.org/wiki/CodinGame",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "CSSBattle",
+    "url": "https://cssbattle.dev/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Exercism",
+    "url": "https://en.wikipedia.org/wiki/Exercism",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Frontend Mentor",
+    "url": "https://www.frontendmentor.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Google Code Jam",
+    "url": "https://en.wikipedia.org/wiki/Google_Code_Jam",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "HackerRank",
+    "url": "https://en.wikipedia.org/wiki/HackerRank",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "ICPC",
+    "url": "https://en.wikipedia.org/wiki/International_Collegiate_Programming_Contest",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "International Olympiad in Informatics",
+    "url": "https://en.wikipedia.org/wiki/International_Olympiad_in_Informatics",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Kaggle",
+    "url": "https://en.wikipedia.org/wiki/Kaggle",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "LeetCode",
+    "url": "https://en.wikipedia.org/wiki/LeetCode",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Project Euler",
+    "url": "https://en.wikipedia.org/wiki/Project_Euler",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "Rosalind",
+    "url": "https://en.wikipedia.org/wiki/Rosalind_(education_platform)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Prática e desafios",
+    "name": "TopCoder",
+    "url": "https://en.wikipedia.org/wiki/Topcoder",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "AES",
+    "url": "https://en.wikipedia.org/wiki/Advanced_Encryption_Standard",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "Autenticação de dois fatores",
+    "url": "https://en.wikipedia.org/wiki/Multi-factor_authentication",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Segurança",
+    "name": "bcrypt",
+    "url": "https://en.wikipedia.org/wiki/Bcrypt",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "CORS",
+    "url": "https://en.wikipedia.org/wiki/Cross-origin_resource_sharing",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "Criptografia",
+    "url": "https://en.wikipedia.org/wiki/Cryptography",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Segurança",
+    "name": "Criptografia de chave pública",
+    "url": "https://en.wikipedia.org/wiki/Public-key_cryptography",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "Cross-site scripting (XSS)",
+    "url": "https://en.wikipedia.org/wiki/Cross-site_scripting",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "CSRF",
+    "url": "https://en.wikipedia.org/wiki/Cross-site_request_forgery",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "CVE",
+    "url": "https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "Firewall",
+    "url": "https://en.wikipedia.org/wiki/Firewall_(computing)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "Injeção de SQL",
+    "url": "https://en.wikipedia.org/wiki/SQL_injection",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "JSON Web Token (JWT)",
+    "url": "https://en.wikipedia.org/wiki/JSON_Web_Token",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "MD5",
+    "url": "https://en.wikipedia.org/wiki/MD5",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "OAuth",
+    "url": "https://en.wikipedia.org/wiki/OAuth",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Segurança",
+    "name": "OWASP",
+    "url": "https://en.wikipedia.org/wiki/OWASP",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "Passkeys",
+    "url": "https://en.wikipedia.org/wiki/WebAuthn",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "RSA",
+    "url": "https://en.wikipedia.org/wiki/RSA_(cryptosystem)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "SHA-2",
+    "url": "https://en.wikipedia.org/wiki/SHA-2",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Segurança",
+    "name": "VPN",
+    "url": "https://en.wikipedia.org/wiki/Virtual_private_network",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Bash",
+    "url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Bourne shell (sh)",
+    "url": "https://en.wikipedia.org/wiki/Bourne_shell",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "C shell",
+    "url": "https://en.wikipedia.org/wiki/C_shell",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Fish",
+    "url": "https://en.wikipedia.org/wiki/Fish_(Unix_shell)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "GNOME Terminal",
+    "url": "https://en.wikipedia.org/wiki/GNOME_Terminal",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "iTerm2",
+    "url": "https://en.wikipedia.org/wiki/ITerm2",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Konsole",
+    "url": "https://en.wikipedia.org/wiki/Konsole",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "KornShell",
+    "url": "https://en.wikipedia.org/wiki/KornShell",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Nushell",
+    "url": "https://www.nushell.sh/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "PowerShell",
+    "url": "https://en.wikipedia.org/wiki/PowerShell",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Prompt de Comando (cmd)",
+    "url": "https://en.wikipedia.org/wiki/Cmd.exe",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "PuTTY",
+    "url": "https://en.wikipedia.org/wiki/PuTTY",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Terminal (macOS)",
+    "url": "https://en.wikipedia.org/wiki/Terminal_(macOS)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "tmux",
+    "url": "https://en.wikipedia.org/wiki/Tmux",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Warp",
+    "url": "https://www.warp.dev/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Windows Terminal",
+    "url": "https://en.wikipedia.org/wiki/Windows_Terminal",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Shells e terminais",
+    "name": "Zsh",
+    "url": "https://en.wikipedia.org/wiki/Z_shell",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Activepieces",
+    "url": "https://www.activepieces.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Apache Airflow",
+    "url": "https://en.wikipedia.org/wiki/Apache_Airflow",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Atalhos (Apple Shortcuts)",
+    "url": "https://en.wikipedia.org/wiki/Shortcuts_(Apple)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Automation Anywhere",
+    "url": "https://en.wikipedia.org/wiki/Automation_Anywhere",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Cron",
+    "url": "https://en.wikipedia.org/wiki/Cron",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "GNU Make",
+    "url": "https://en.wikipedia.org/wiki/Make_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Home Assistant",
+    "url": "https://en.wikipedia.org/wiki/Home_Assistant",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Huginn",
+    "url": "https://github.com/huginn/huginn",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "IFTTT",
+    "url": "https://en.wikipedia.org/wiki/IFTTT",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Make",
+    "url": "https://www.make.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Microsoft Power Automate",
+    "url": "https://en.wikipedia.org/wiki/Microsoft_Power_Automate",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "n8n",
+    "url": "https://n8n.io/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Node-RED",
+    "url": "https://en.wikipedia.org/wiki/Node-RED",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Pipedream",
+    "url": "https://pipedream.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Playwright",
+    "url": "https://playwright.dev/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Selenium",
+    "url": "https://en.wikipedia.org/wiki/Selenium_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Tasker",
+    "url": "https://tasker.joaoapps.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "UiPath",
+    "url": "https://en.wikipedia.org/wiki/UiPath",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Workato",
+    "url": "https://en.wikipedia.org/wiki/Workato",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de automação",
+    "name": "Zapier",
+    "url": "https://en.wikipedia.org/wiki/Zapier",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "Adobe RGB",
+    "url": "https://en.wikipedia.org/wiki/Adobe_RGB_color_space",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "Canal alfa",
+    "url": "https://en.wikipedia.org/wiki/Alpha_compositing",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "CIELAB",
+    "url": "https://en.wikipedia.org/wiki/CIELAB_color_space",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "CMYK",
+    "url": "https://en.wikipedia.org/wiki/CMYK_color_model",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "Display P3",
+    "url": "https://en.wikipedia.org/wiki/DCI-P3",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "Escala de cinza",
+    "url": "https://en.wikipedia.org/wiki/Grayscale",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "HEX (cores web)",
+    "url": "https://en.wikipedia.org/wiki/Web_colors",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "HSL e HSV",
+    "url": "https://en.wikipedia.org/wiki/HSL_and_HSV",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "Oklab e OKLCH",
+    "url": "https://en.wikipedia.org/wiki/Oklab_color_space",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "Pantone",
+    "url": "https://en.wikipedia.org/wiki/Pantone",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "RGB",
+    "url": "https://en.wikipedia.org/wiki/RGB_color_model",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "RGBA",
+    "url": "https://en.wikipedia.org/wiki/RGBA_color_model",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "RYB",
+    "url": "https://en.wikipedia.org/wiki/RYB_color_model",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "sRGB",
+    "url": "https://en.wikipedia.org/wiki/SRGB",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas de cores",
+    "name": "YCbCr",
+    "url": "https://en.wikipedia.org/wiki/YCbCr",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Binário",
+    "url": "https://en.wikipedia.org/wiki/Binary_number",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Bit",
+    "url": "https://en.wikipedia.org/wiki/Bit",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Byte",
+    "url": "https://en.wikipedia.org/wiki/Byte",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Complemento de dois",
+    "url": "https://en.wikipedia.org/wiki/Two's_complement",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Código Gray",
+    "url": "https://en.wikipedia.org/wiki/Gray_code",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Decimal",
+    "url": "https://en.wikipedia.org/wiki/Decimal",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Decimal codificado em binário (BCD)",
+    "url": "https://en.wikipedia.org/wiki/Binary-coded_decimal",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Hexadecimal",
+    "url": "https://en.wikipedia.org/wiki/Hexadecimal",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Lógica booleana",
+    "url": "https://en.wikipedia.org/wiki/Boolean_algebra",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Nibble",
+    "url": "https://en.wikipedia.org/wiki/Nibble",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Octal",
+    "url": "https://en.wikipedia.org/wiki/Octal",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Ponto flutuante (IEEE 754)",
+    "url": "https://en.wikipedia.org/wiki/IEEE_754",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas numéricos",
+    "name": "Prefixos binários (KiB, MiB)",
+    "url": "https://en.wikipedia.org/wiki/Binary_prefix",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "AmigaOS",
+    "url": "https://en.wikipedia.org/wiki/AmigaOS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Android",
+    "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Arch Linux",
+    "url": "https://en.wikipedia.org/wiki/Arch_Linux",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "BeOS",
+    "url": "https://en.wikipedia.org/wiki/BeOS",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "BlackBerry OS",
+    "url": "https://en.wikipedia.org/wiki/BlackBerry_OS",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "CentOS",
+    "url": "https://en.wikipedia.org/wiki/CentOS",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "ChromeOS",
+    "url": "https://en.wikipedia.org/wiki/ChromeOS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "CP/M",
+    "url": "https://en.wikipedia.org/wiki/CP/M",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Debian",
+    "url": "https://en.wikipedia.org/wiki/Debian",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Fedora",
+    "url": "https://en.wikipedia.org/wiki/Fedora_Linux",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Firefox OS",
+    "url": "https://en.wikipedia.org/wiki/Firefox_OS",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "FreeBSD",
+    "url": "https://en.wikipedia.org/wiki/FreeBSD",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "FreeDOS",
+    "url": "https://en.wikipedia.org/wiki/FreeDOS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Haiku",
+    "url": "https://en.wikipedia.org/wiki/Haiku_(operating_system)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "HarmonyOS",
+    "url": "https://en.wikipedia.org/wiki/HarmonyOS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "iOS",
+    "url": "https://en.wikipedia.org/wiki/IOS",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "iPadOS",
+    "url": "https://en.wikipedia.org/wiki/IPadOS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Kali Linux",
+    "url": "https://en.wikipedia.org/wiki/Kali_Linux",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Linux",
+    "url": "https://en.wikipedia.org/wiki/Linux",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Linux Mint",
+    "url": "https://en.wikipedia.org/wiki/Linux_Mint",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "macOS",
+    "url": "https://en.wikipedia.org/wiki/MacOS",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "MS-DOS",
+    "url": "https://en.wikipedia.org/wiki/MS-DOS",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "OpenBSD",
+    "url": "https://en.wikipedia.org/wiki/OpenBSD",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "OS/2",
+    "url": "https://en.wikipedia.org/wiki/OS/2",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Palm OS",
+    "url": "https://en.wikipedia.org/wiki/Palm_OS",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Red Hat Enterprise Linux",
+    "url": "https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Solaris",
+    "url": "https://en.wikipedia.org/wiki/Oracle_Solaris",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Symbian",
+    "url": "https://en.wikipedia.org/wiki/Symbian",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Tizen",
+    "url": "https://en.wikipedia.org/wiki/Tizen",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Ubuntu",
+    "url": "https://en.wikipedia.org/wiki/Ubuntu",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Unix",
+    "url": "https://en.wikipedia.org/wiki/Unix",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "webOS",
+    "url": "https://en.wikipedia.org/wiki/WebOS",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Windows",
+    "url": "https://en.wikipedia.org/wiki/Microsoft_Windows",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Sistemas operacionais",
+    "name": "Windows Phone",
+    "url": "https://en.wikipedia.org/wiki/Windows_Phone",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Acessibilidade web (WCAG)",
+    "url": "https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Adobe Flash",
+    "url": "https://en.wikipedia.org/wiki/Adobe_Flash",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "AJAX",
+    "url": "https://en.wikipedia.org/wiki/Ajax_(programming)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Blink",
+    "url": "https://en.wikipedia.org/wiki/Blink_(browser_engine)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Canvas",
+    "url": "https://en.wikipedia.org/wiki/Canvas_element",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "CDN",
+    "url": "https://en.wikipedia.org/wiki/Content_delivery_network",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Cookie",
+    "url": "https://en.wikipedia.org/wiki/HTTP_cookie",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Design responsivo",
+    "url": "https://en.wikipedia.org/wiki/Responsive_web_design",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "DOM",
+    "url": "https://en.wikipedia.org/wiki/Document_Object_Model",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Gecko",
+    "url": "https://en.wikipedia.org/wiki/Gecko_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Internet Explorer",
+    "url": "https://en.wikipedia.org/wiki/Internet_Explorer",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Java Applet",
+    "url": "https://en.wikipedia.org/wiki/Java_applet",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Microsoft Silverlight",
+    "url": "https://en.wikipedia.org/wiki/Microsoft_Silverlight",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Motor de navegador",
+    "url": "https://en.wikipedia.org/wiki/Browser_engine",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "PWA (aplicativo web progressivo)",
+    "url": "https://en.wikipedia.org/wiki/Progressive_web_app",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "SEO",
+    "url": "https://en.wikipedia.org/wiki/Search_engine_optimization",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Service Worker",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "SPA (aplicação de página única)",
+    "url": "https://en.wikipedia.org/wiki/Single-page_application",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Trident",
+    "url": "https://en.wikipedia.org/wiki/Trident_(software)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "URL",
+    "url": "https://en.wikipedia.org/wiki/URL",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "Web Components",
+    "url": "https://en.wikipedia.org/wiki/Web_Components",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "WebGL",
+    "url": "https://en.wikipedia.org/wiki/WebGL",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "WebGPU",
+    "url": "https://en.wikipedia.org/wiki/WebGPU",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "WebKit",
+    "url": "https://en.wikipedia.org/wiki/WebKit",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tecnologias web",
+    "name": "World Wide Web",
+    "url": "https://en.wikipedia.org/wiki/World_Wide_Web",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Bytecode",
+    "url": "https://en.wikipedia.org/wiki/Bytecode",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Código-fonte",
+    "url": "https://en.wikipedia.org/wiki/Source_code",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Código-objeto",
+    "url": "https://en.wikipedia.org/wiki/Object_code",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem compilada",
+    "url": "https://en.wikipedia.org/wiki/Compiled_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de alto nível",
+    "url": "https://en.wikipedia.org/wiki/High-level_programming_language",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de baixo nível",
+    "url": "https://en.wikipedia.org/wiki/Low-level_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de consulta",
+    "url": "https://en.wikipedia.org/wiki/Query_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de domínio específico",
+    "url": "https://en.wikipedia.org/wiki/Domain-specific_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de marcação",
+    "url": "https://en.wikipedia.org/wiki/Markup_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de montagem (Assembly)",
+    "url": "https://en.wikipedia.org/wiki/Assembly_language",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de máquina",
+    "url": "https://en.wikipedia.org/wiki/Machine_code",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de primeira geração",
+    "url": "https://en.wikipedia.org/wiki/First-generation_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de programação visual",
+    "url": "https://en.wikipedia.org/wiki/Visual_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de propósito geral",
+    "url": "https://en.wikipedia.org/wiki/General-purpose_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de quarta geração",
+    "url": "https://en.wikipedia.org/wiki/Fourth-generation_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de quinta geração",
+    "url": "https://en.wikipedia.org/wiki/Fifth-generation_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de script",
+    "url": "https://en.wikipedia.org/wiki/Scripting_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de segunda geração",
+    "url": "https://en.wikipedia.org/wiki/Second-generation_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem de terceira geração",
+    "url": "https://en.wikipedia.org/wiki/Third-generation_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem esotérica",
+    "url": "https://en.wikipedia.org/wiki/Esoteric_programming_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Linguagem interpretada",
+    "url": "https://en.wikipedia.org/wiki/Interpreted_language",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Pseudocódigo",
+    "url": "https://en.wikipedia.org/wiki/Pseudocode",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Representação intermediária",
+    "url": "https://en.wikipedia.org/wiki/Intermediate_representation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Tipagem dinâmica",
+    "url": "https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Tipos de linguagem computacional",
+    "name": "Tipagem estática",
+    "url": "https://en.wikipedia.org/wiki/Type_system#Static_type_checking",
+    "description": "",
+    "tags": []
+  }
+]</script><script>window.DEFAULT_CATEGORY="__ALL__";</script><script defer="" src="script.js"></script></div>
+<!-- PWA Install Button -->
+<button class="pwa-install" hidden="" id="btnInstall">Instalar app</button>
+<script defer="defer" src="./sw-register.js"></script>
 </body>
 </html>
