@@ -1,45 +1,29 @@
 <!DOCTYPE html>
-
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<!-- Ícones principais --><!-- Apple (iOS) -->
-<link href="./images/icon_192.png" rel="apple-touch-icon"/>
-<!-- Preload opcional para o SVG se quiser -->
-<link as="image" href="./images/icon.svg" imagesizes="23px" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>BiblioVerse — A Biblioteca de Programação — Catálogo pesquisável do essencial da programação por categoria</title>
+<meta content="Catálogo pesquisável do essencial da programação por categoria: linguagens, formatos, protocolos, conceitos, ferramentas e figuras-chave. O projeto é minimalista e ideal para colocar nos favoritos do seu navegador." name="description"/>
+<link href="https://code.biblioverse.org/" rel="canonical"/>
 <meta content="#0e1117" name="theme-color"/>
 <meta content="yes" name="mobile-web-app-capable"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
-<title>BiblioVerse — A Biblioteca de Programação — Catálogo pesquisável do essencial da programação por categoria</title>
 <!-- App icons -->
 <link href="images/icon.svg" rel="icon" type="image/svg+xml"/>
 <link href="images/icon_192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="images/icon_512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="images/icon_192.png" rel="apple-touch-icon"/>
-<meta content="#0e1117" name="theme-color"/>
 <link href="manifest.webmanifest" rel="manifest"/>
-<meta content="Catálogo pesquisável do essencial da programação por categoria: linguagens, formatos, protocolos, conceitos, ferramentas e figuras-chave. O projeto é minimalista e ideal para colocar nos favoritos do seu navegador." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link as="style" href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" onload="this.rel='stylesheet'" rel="preload"/><noscript><link href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" rel="stylesheet"/></noscript>
 <link as="style" href="styles.css" onload="this.rel='stylesheet'" rel="preload"/><noscript><link href="styles.css" rel="stylesheet"/></noscript>
-<link href="./manifest.webmanifest" rel="manifest"/>
+<script src="https://biblioverse.org/superbar.js" defer></script>
 </head>
 <body>
-<!-- Super-bar: 8 equal tabs across the full width -->
-<nav aria-label="Bibliotecas" class="superbar">
-<div class="superbar-toggle"><span class="superbar-title i18n-superbar-title">BiblioVerse - A Biblioteca de Tudo</span> <span aria-hidden="true" class="icon-burger"><i></i><i></i><i></i></span><span aria-hidden="true" class="icon-close">✕</span></div>
-<ul class="superbar-list">
-<li class="superbar-item"><a data-key="design" href="https://design.biblioverse.org">Design</a></li>
-<li class="superbar-item"><a data-key="games" href="https://games.biblioverse.org">Games</a></li>
-<li class="superbar-item"><a data-key="language" href="https://language.biblioverse.org">Idiomas</a></li>
-<li class="superbar-item"><a data-key="ai" href="https://ai.biblioverse.org">IA</a></li>
-<li class="superbar-item"><a data-key="music" href="https://music.biblioverse.org">Música</a></li>
-<li class="superbar-item active"><a data-key="coding" href="https://code.biblioverse.org">Programação</a></li>
-<li class="superbar-item"><a data-key="social" href="https://social.biblioverse.org">Redes Sociais</a></li>
-</ul>
-</nav>
+<!-- BiblioVerse Superbar -->
+<nav id="bvbar" class="bvbar" data-current="coding" aria-label="BiblioVerse" style="position:fixed;top:0;left:0;right:0;height:44px;z-index:9000;background:linear-gradient(90deg,#4f7cff,#7a5cff)"><a href="https://biblioverse.org" style="color:#fff;line-height:44px;padding:0 14px;font-weight:700;text-decoration:none;font-family:sans-serif">BiblioVerse</a></nav>
 <aside aria-label="Categorias" class="sidepush" id="sidepush"><div class="sidepush-top"><button aria-label="Expandir menu" class="side-toggle" id="menuToggle" title="Expandir menu" type="button">▶</button></div><nav class="sidepush-scroll" id="sideScroll"><ul class="sidepush-menu" id="sideMenu"></ul></nav></aside><div class="push-wrap" id="pushWrap"><header class="site-header">
 <div class="header-inner container">
 <div class="brand-wrap">
@@ -56,15 +40,9 @@
       BETA
     </span>
 </h1>
-<span class="byline">
-<span class="i18n-by">Idealizada por</span>
-<a class="bylink" href="https://instagram.com/jvlioczar" rel="noopener noreferrer" target="_blank">Julio Cesar Prava</a>
-<span class="i18n-and"></span>
-<a class="bylink" href="" rel="noopener noreferrer" target="_blank"></a>
-</span>
 </div>
 <div class="controls">
-<input autofocus="" class="mono" id="search" placeholder="Buscar por nome" type="search"/>
+<input class="mono" id="search" placeholder="Buscar por nome" type="search"/>
 <select class="mono" id="categoryFilter" title="Filtrar por categoria"></select>
 <div class="control-group">
 <button aria-label="Alternar tema" class="toggle" id="themeToggle" type="button">☀️</button>
@@ -84,7 +62,7 @@
       <span id="count">0</span>
 <span class="i18n-items">itens</span>
 <span class="sep">|</span>
-<span class="i18n-lastupdate">Última atualização: Setembro/2026</span>
+<span class="i18n-lastupdate">Última atualização: Outubro/2026</span>
 </div>
 <p class="footer-lead">
 <span class="i18n-footer-lead-pre">O projeto</span>
@@ -94,7 +72,7 @@
 <p class="footer-note i18n-bookmarkShare">Salve esse projeto nos seus favoritos e compartilhe!</p>
 <p class="footer-nav"><span class="i18n-footernav">Acesse as bibliotecas de outros temas úteis no <strong class="bverse-strong">BiblioVerse</strong>.</span></p>
 <div class="footer-actions">
-<a class="btn linkedin mono" href="https://linkedin.com/in/juliocesarprava/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="btn linkedin mono" href="https://www.linkedin.com/company/biblioverse.org" rel="noopener noreferrer" target="_blank">LinkedIn</a>
 <button aria-label="Favoritar" class="btn star mono" id="favBtn" type="button">⭐</button>
 <button class="btn share mono" id="shareBtn" type="button"><span class="i18n-share">Compartilhar</span></button>
 <a class="btn bverse mono" href="https://biblioverse.org" rel="noopener noreferrer" target="_blank">BiblioVerse</a>
@@ -265,7 +243,7 @@
   {
     "category": "Aplicativos de ensino",
     "name": "Brilliant",
-    "url": "https://en.wikipedia.org/wiki/Brilliant_(website)",
+    "url": "https://brilliant.org/",
     "description": "",
     "tags": []
   },
@@ -279,7 +257,7 @@
   {
     "category": "Aplicativos de ensino",
     "name": "CodeCombat",
-    "url": "https://en.wikipedia.org/wiki/CodeCombat",
+    "url": "https://codecombat.com/",
     "description": "",
     "tags": []
   },
@@ -308,7 +286,7 @@
   {
     "category": "Aplicativos de ensino",
     "name": "Lightbot",
-    "url": "https://en.wikipedia.org/wiki/Lightbot",
+    "url": "https://lightbot.com/",
     "description": "",
     "tags": []
   },
@@ -345,14 +323,14 @@
   {
     "category": "Aplicativos de ensino",
     "name": "Swift Playgrounds",
-    "url": "https://en.wikipedia.org/wiki/Swift_Playgrounds",
+    "url": "https://www.apple.com/swift/playgrounds/",
     "description": "",
     "tags": []
   },
   {
     "category": "Arquitetura e APIs",
     "name": "Apache Kafka",
-    "url": "https://en.wikipedia.org/wiki/Apache_Kafka",
+    "url": "https://kafka.apache.org/",
     "description": "",
     "tags": []
   },
@@ -394,21 +372,21 @@
   {
     "category": "Arquitetura e APIs",
     "name": "GraphQL",
-    "url": "https://en.wikipedia.org/wiki/GraphQL",
+    "url": "https://graphql.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Arquitetura e APIs",
     "name": "gRPC",
-    "url": "https://en.wikipedia.org/wiki/GRPC",
+    "url": "https://grpc.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "Arquitetura e APIs",
     "name": "JSON-RPC",
-    "url": "https://en.wikipedia.org/wiki/JSON-RPC",
+    "url": "https://www.jsonrpc.org/",
     "description": "",
     "tags": []
   },
@@ -445,14 +423,14 @@
   {
     "category": "Arquitetura e APIs",
     "name": "OpenAPI",
-    "url": "https://en.wikipedia.org/wiki/OpenAPI_Specification",
+    "url": "https://www.openapis.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Arquitetura e APIs",
     "name": "RabbitMQ",
-    "url": "https://en.wikipedia.org/wiki/RabbitMQ",
+    "url": "https://www.rabbitmq.com/",
     "description": "",
     "tags": []
   },
@@ -488,21 +466,21 @@
   {
     "category": "Bancos de dados",
     "name": "Amazon DynamoDB",
-    "url": "https://en.wikipedia.org/wiki/Amazon_DynamoDB",
+    "url": "https://aws.amazon.com/dynamodb/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "Apache Cassandra",
-    "url": "https://en.wikipedia.org/wiki/Apache_Cassandra",
+    "url": "https://cassandra.apache.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "CouchDB",
-    "url": "https://en.wikipedia.org/wiki/Apache_CouchDB",
+    "url": "https://couchdb.apache.org/",
     "description": "",
     "tags": []
   },
@@ -516,63 +494,63 @@
   {
     "category": "Bancos de dados",
     "name": "DuckDB",
-    "url": "https://en.wikipedia.org/wiki/DuckDB",
+    "url": "https://duckdb.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "Elasticsearch",
-    "url": "https://en.wikipedia.org/wiki/Elasticsearch",
+    "url": "https://www.elastic.co/elasticsearch",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "Firebase",
-    "url": "https://en.wikipedia.org/wiki/Firebase",
+    "url": "https://firebase.google.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "Firebird",
-    "url": "https://en.wikipedia.org/wiki/Firebird_(database_server)",
+    "url": "https://firebirdsql.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "IBM Db2",
-    "url": "https://en.wikipedia.org/wiki/IBM_Db2",
+    "url": "https://www.ibm.com/db2",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "MariaDB",
-    "url": "https://en.wikipedia.org/wiki/MariaDB",
+    "url": "https://mariadb.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "Microsoft Access",
-    "url": "https://en.wikipedia.org/wiki/Microsoft_Access",
+    "url": "https://www.microsoft.com/microsoft-365/access",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "Microsoft SQL Server",
-    "url": "https://en.wikipedia.org/wiki/Microsoft_SQL_Server",
+    "url": "https://www.microsoft.com/sql-server",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "MongoDB",
-    "url": "https://en.wikipedia.org/wiki/MongoDB",
+    "url": "https://www.mongodb.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -580,7 +558,7 @@
   {
     "category": "Bancos de dados",
     "name": "MySQL",
-    "url": "https://en.wikipedia.org/wiki/MySQL",
+    "url": "https://www.mysql.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -588,21 +566,21 @@
   {
     "category": "Bancos de dados",
     "name": "Neo4j",
-    "url": "https://en.wikipedia.org/wiki/Neo4j",
+    "url": "https://neo4j.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "Oracle Database",
-    "url": "https://en.wikipedia.org/wiki/Oracle_Database",
+    "url": "https://www.oracle.com/database/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "PostgreSQL",
-    "url": "https://en.wikipedia.org/wiki/PostgreSQL",
+    "url": "https://www.postgresql.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -610,14 +588,14 @@
   {
     "category": "Bancos de dados",
     "name": "Redis",
-    "url": "https://en.wikipedia.org/wiki/Redis",
+    "url": "https://redis.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "Bancos de dados",
     "name": "SQLite",
-    "url": "https://en.wikipedia.org/wiki/SQLite",
+    "url": "https://sqlite.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -632,7 +610,7 @@
   {
     "category": "Ciência de dados e IA",
     "name": "Apache Spark",
-    "url": "https://en.wikipedia.org/wiki/Apache_Spark",
+    "url": "https://spark.apache.org/",
     "description": "",
     "tags": []
   },
@@ -647,42 +625,42 @@
   {
     "category": "Ciência de dados e IA",
     "name": "Hugging Face",
-    "url": "https://en.wikipedia.org/wiki/Hugging_Face",
+    "url": "https://huggingface.co/",
     "description": "",
     "tags": []
   },
   {
     "category": "Ciência de dados e IA",
     "name": "Jupyter",
-    "url": "https://en.wikipedia.org/wiki/Project_Jupyter",
+    "url": "https://jupyter.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Ciência de dados e IA",
     "name": "Keras",
-    "url": "https://en.wikipedia.org/wiki/Keras",
+    "url": "https://keras.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "Ciência de dados e IA",
     "name": "LangChain",
-    "url": "https://en.wikipedia.org/wiki/LangChain",
+    "url": "https://www.langchain.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Ciência de dados e IA",
     "name": "Matplotlib",
-    "url": "https://en.wikipedia.org/wiki/Matplotlib",
+    "url": "https://matplotlib.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Ciência de dados e IA",
     "name": "NumPy",
-    "url": "https://en.wikipedia.org/wiki/NumPy",
+    "url": "https://numpy.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -690,14 +668,14 @@
   {
     "category": "Ciência de dados e IA",
     "name": "OpenCV",
-    "url": "https://en.wikipedia.org/wiki/OpenCV",
+    "url": "https://opencv.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Ciência de dados e IA",
     "name": "pandas",
-    "url": "https://en.wikipedia.org/wiki/Pandas_(software)",
+    "url": "https://pandas.pydata.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -705,7 +683,7 @@
   {
     "category": "Ciência de dados e IA",
     "name": "Plotly",
-    "url": "https://en.wikipedia.org/wiki/Plotly",
+    "url": "https://plotly.com/",
     "description": "",
     "tags": []
   },
@@ -719,7 +697,7 @@
   {
     "category": "Ciência de dados e IA",
     "name": "PyTorch",
-    "url": "https://en.wikipedia.org/wiki/PyTorch",
+    "url": "https://pytorch.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -727,21 +705,21 @@
   {
     "category": "Ciência de dados e IA",
     "name": "scikit-learn",
-    "url": "https://en.wikipedia.org/wiki/Scikit-learn",
+    "url": "https://scikit-learn.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Ciência de dados e IA",
     "name": "SciPy",
-    "url": "https://en.wikipedia.org/wiki/SciPy",
+    "url": "https://scipy.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Ciência de dados e IA",
     "name": "TensorFlow",
-    "url": "https://en.wikipedia.org/wiki/TensorFlow",
+    "url": "https://www.tensorflow.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -865,14 +843,14 @@
   {
     "category": "Comunidades e fóruns",
     "name": "Experts Exchange",
-    "url": "https://en.wikipedia.org/wiki/Experts-Exchange",
+    "url": "https://www.experts-exchange.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Comunidades e fóruns",
     "name": "Hacker News",
-    "url": "https://en.wikipedia.org/wiki/Hacker_News",
+    "url": "https://news.ycombinator.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -901,21 +879,21 @@
   {
     "category": "Comunidades e fóruns",
     "name": "Slashdot",
-    "url": "https://en.wikipedia.org/wiki/Slashdot",
+    "url": "https://slashdot.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Comunidades e fóruns",
     "name": "Stack Exchange",
-    "url": "https://en.wikipedia.org/wiki/Stack_Exchange",
+    "url": "https://stackexchange.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Comunidades e fóruns",
     "name": "Stack Overflow",
-    "url": "https://en.wikipedia.org/wiki/Stack_Overflow",
+    "url": "https://stackoverflow.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1215,21 +1193,21 @@
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Azure DevOps",
-    "url": "https://en.wikipedia.org/wiki/Azure_DevOps_Server",
+    "url": "https://azure.microsoft.com/products/devops",
     "description": "",
     "tags": []
   },
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Bitbucket",
-    "url": "https://en.wikipedia.org/wiki/Bitbucket",
+    "url": "https://bitbucket.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Codeberg",
-    "url": "https://en.wikipedia.org/wiki/Codeberg",
+    "url": "https://codeberg.org/",
     "description": "",
     "tags": []
   },
@@ -1244,14 +1222,14 @@
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Fossil",
-    "url": "https://en.wikipedia.org/wiki/Fossil_(software)",
+    "url": "https://fossil-scm.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Git",
-    "url": "https://en.wikipedia.org/wiki/Git",
+    "url": "https://git-scm.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1259,14 +1237,14 @@
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Gitea",
-    "url": "https://en.wikipedia.org/wiki/Gitea",
+    "url": "https://about.gitea.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "GitHub",
-    "url": "https://en.wikipedia.org/wiki/GitHub",
+    "url": "https://github.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1274,7 +1252,7 @@
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "GitLab",
-    "url": "https://en.wikipedia.org/wiki/GitLab",
+    "url": "https://about.gitlab.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1290,35 +1268,35 @@
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Launchpad",
-    "url": "https://en.wikipedia.org/wiki/Launchpad_(website)",
+    "url": "https://launchpad.net/",
     "description": "",
     "tags": []
   },
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Mercurial",
-    "url": "https://en.wikipedia.org/wiki/Mercurial",
+    "url": "https://www.mercurial-scm.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Perforce",
-    "url": "https://en.wikipedia.org/wiki/Perforce",
+    "url": "https://www.perforce.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "SourceForge",
-    "url": "https://en.wikipedia.org/wiki/SourceForge",
+    "url": "https://sourceforge.net/",
     "description": "",
     "tags": []
   },
   {
     "category": "Controle de versão e hospedagem de código",
     "name": "Subversion (SVN)",
-    "url": "https://en.wikipedia.org/wiki/Apache_Subversion",
+    "url": "https://subversion.apache.org/",
     "description": "",
     "tags": []
   },
@@ -1339,14 +1317,14 @@
   {
     "category": "Cursos e plataformas de ensino",
     "name": "Code.org",
-    "url": "https://en.wikipedia.org/wiki/Code.org",
+    "url": "https://code.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Cursos e plataformas de ensino",
     "name": "Codecademy",
-    "url": "https://en.wikipedia.org/wiki/Codecademy",
+    "url": "https://www.codecademy.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1354,14 +1332,14 @@
   {
     "category": "Cursos e plataformas de ensino",
     "name": "Coursera",
-    "url": "https://en.wikipedia.org/wiki/Coursera",
+    "url": "https://www.coursera.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Cursos e plataformas de ensino",
     "name": "CS50 (Harvard)",
-    "url": "https://en.wikipedia.org/wiki/CS50",
+    "url": "https://cs50.harvard.edu/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1390,14 +1368,14 @@
   {
     "category": "Cursos e plataformas de ensino",
     "name": "edX",
-    "url": "https://en.wikipedia.org/wiki/EdX",
+    "url": "https://www.edx.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Cursos e plataformas de ensino",
     "name": "freeCodeCamp",
-    "url": "https://en.wikipedia.org/wiki/FreeCodeCamp",
+    "url": "https://www.freecodecamp.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1412,21 +1390,21 @@
   {
     "category": "Cursos e plataformas de ensino",
     "name": "Khan Academy",
-    "url": "https://en.wikipedia.org/wiki/Khan_Academy",
+    "url": "https://www.khanacademy.org/computing",
     "description": "",
     "tags": []
   },
   {
     "category": "Cursos e plataformas de ensino",
     "name": "MIT OpenCourseWare",
-    "url": "https://en.wikipedia.org/wiki/MIT_OpenCourseWare",
+    "url": "https://ocw.mit.edu/",
     "description": "",
     "tags": []
   },
   {
     "category": "Cursos e plataformas de ensino",
     "name": "Pluralsight",
-    "url": "https://en.wikipedia.org/wiki/Pluralsight",
+    "url": "https://www.pluralsight.com/",
     "description": "",
     "tags": []
   },
@@ -1454,63 +1432,63 @@
   {
     "category": "Cursos e plataformas de ensino",
     "name": "Treehouse",
-    "url": "https://en.wikipedia.org/wiki/Treehouse_(company)",
+    "url": "https://teamtreehouse.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Cursos e plataformas de ensino",
     "name": "Udacity",
-    "url": "https://en.wikipedia.org/wiki/Udacity",
+    "url": "https://www.udacity.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Cursos e plataformas de ensino",
     "name": "Udemy",
-    "url": "https://en.wikipedia.org/wiki/Udemy",
+    "url": "https://www.udemy.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Cursos e plataformas de ensino",
     "name": "W3Schools",
-    "url": "https://en.wikipedia.org/wiki/W3Schools",
+    "url": "https://www.w3schools.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Ansible",
-    "url": "https://en.wikipedia.org/wiki/Ansible_(software)",
+    "url": "https://www.ansible.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Apache HTTP Server",
-    "url": "https://en.wikipedia.org/wiki/Apache_HTTP_Server",
+    "url": "https://httpd.apache.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Chef",
-    "url": "https://en.wikipedia.org/wiki/Progress_Chef",
+    "url": "https://www.chef.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "CircleCI",
-    "url": "https://en.wikipedia.org/wiki/CircleCI",
+    "url": "https://circleci.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Docker",
-    "url": "https://en.wikipedia.org/wiki/Docker_(software)",
+    "url": "https://www.docker.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1518,42 +1496,42 @@
   {
     "category": "DevOps e contêineres",
     "name": "Docker Swarm",
-    "url": "https://en.wikipedia.org/wiki/Docker_(software)",
+    "url": "https://docs.docker.com/engine/swarm/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "GitHub Actions",
-    "url": "https://en.wikipedia.org/wiki/GitHub#GitHub_Actions",
+    "url": "https://github.com/features/actions",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "GitLab CI/CD",
-    "url": "https://en.wikipedia.org/wiki/GitLab",
+    "url": "https://docs.gitlab.com/ci/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Grafana",
-    "url": "https://en.wikipedia.org/wiki/Grafana",
+    "url": "https://grafana.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Jenkins",
-    "url": "https://en.wikipedia.org/wiki/Jenkins_(software)",
+    "url": "https://www.jenkins.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Kubernetes",
-    "url": "https://en.wikipedia.org/wiki/Kubernetes",
+    "url": "https://kubernetes.io/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1561,7 +1539,7 @@
   {
     "category": "DevOps e contêineres",
     "name": "Nginx",
-    "url": "https://en.wikipedia.org/wiki/Nginx",
+    "url": "https://nginx.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1569,42 +1547,42 @@
   {
     "category": "DevOps e contêineres",
     "name": "Podman",
-    "url": "https://en.wikipedia.org/wiki/Podman",
+    "url": "https://podman.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Prometheus",
-    "url": "https://en.wikipedia.org/wiki/Prometheus_(software)",
+    "url": "https://prometheus.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Puppet",
-    "url": "https://en.wikipedia.org/wiki/Puppet_(software)",
+    "url": "https://www.puppet.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Terraform",
-    "url": "https://en.wikipedia.org/wiki/Terraform_(software)",
+    "url": "https://www.terraform.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Travis CI",
-    "url": "https://en.wikipedia.org/wiki/Travis_CI",
+    "url": "https://www.travis-ci.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "DevOps e contêineres",
     "name": "Vagrant",
-    "url": "https://en.wikipedia.org/wiki/Vagrant_(software)",
+    "url": "https://www.vagrantup.com/",
     "description": "",
     "tags": []
   },
@@ -1660,7 +1638,7 @@
   {
     "category": "Documentação e referência",
     "name": "MDN Web Docs",
-    "url": "https://en.wikipedia.org/wiki/MDN_Web_Docs",
+    "url": "https://developer.mozilla.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1668,7 +1646,7 @@
   {
     "category": "Documentação e referência",
     "name": "Microsoft Learn",
-    "url": "https://en.wikipedia.org/wiki/Microsoft_Learn",
+    "url": "https://learn.microsoft.com/",
     "description": "",
     "tags": []
   },
@@ -1697,7 +1675,7 @@
   {
     "category": "Documentação e referência",
     "name": "Rosetta Code",
-    "url": "https://en.wikipedia.org/wiki/Rosetta_Code",
+    "url": "https://rosettacode.org/",
     "description": "",
     "tags": []
   },
@@ -1711,14 +1689,14 @@
   {
     "category": "Editores e IDEs",
     "name": "Adobe Dreamweaver",
-    "url": "https://en.wikipedia.org/wiki/Adobe_Dreamweaver",
+    "url": "https://www.adobe.com/products/dreamweaver.html",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "Android Studio",
-    "url": "https://en.wikipedia.org/wiki/Android_Studio",
+    "url": "https://developer.android.com/studio",
     "description": "",
     "tags": []
   },
@@ -1756,42 +1734,42 @@
   {
     "category": "Editores e IDEs",
     "name": "Cursor",
-    "url": "https://en.wikipedia.org/wiki/Cursor_(code_editor)",
+    "url": "https://cursor.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "Eclipse",
-    "url": "https://en.wikipedia.org/wiki/Eclipse_(software)",
+    "url": "https://eclipseide.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "Emacs",
-    "url": "https://en.wikipedia.org/wiki/Emacs",
+    "url": "https://www.gnu.org/software/emacs/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "GNU nano",
-    "url": "https://en.wikipedia.org/wiki/GNU_nano",
+    "url": "https://www.nano-editor.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "IntelliJ IDEA",
-    "url": "https://en.wikipedia.org/wiki/IntelliJ_IDEA",
+    "url": "https://www.jetbrains.com/idea/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "JupyterLab",
-    "url": "https://en.wikipedia.org/wiki/Project_Jupyter",
+    "url": "https://jupyter.org/",
     "description": "",
     "tags": []
   },
@@ -1805,42 +1783,42 @@
   {
     "category": "Editores e IDEs",
     "name": "NetBeans",
-    "url": "https://en.wikipedia.org/wiki/NetBeans",
+    "url": "https://netbeans.apache.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "Notepad++",
-    "url": "https://en.wikipedia.org/wiki/Notepad%2B%2B",
+    "url": "https://notepad-plus-plus.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "PyCharm",
-    "url": "https://en.wikipedia.org/wiki/PyCharm",
+    "url": "https://www.jetbrains.com/pycharm/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "RStudio",
-    "url": "https://en.wikipedia.org/wiki/RStudio",
+    "url": "https://posit.co/products/open-source/rstudio/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "Sublime Text",
-    "url": "https://en.wikipedia.org/wiki/Sublime_Text",
+    "url": "https://www.sublimetext.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "Vim",
-    "url": "https://en.wikipedia.org/wiki/Vim_(text_editor)",
+    "url": "https://www.vim.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1848,7 +1826,7 @@
   {
     "category": "Editores e IDEs",
     "name": "Visual Studio",
-    "url": "https://en.wikipedia.org/wiki/Visual_Studio",
+    "url": "https://visualstudio.microsoft.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1856,7 +1834,7 @@
   {
     "category": "Editores e IDEs",
     "name": "Visual Studio Code",
-    "url": "https://en.wikipedia.org/wiki/Visual_Studio_Code",
+    "url": "https://code.visualstudio.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1864,14 +1842,14 @@
   {
     "category": "Editores e IDEs",
     "name": "WebStorm",
-    "url": "https://en.wikipedia.org/wiki/JetBrains#Products",
+    "url": "https://www.jetbrains.com/webstorm/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores e IDEs",
     "name": "Xcode",
-    "url": "https://en.wikipedia.org/wiki/Xcode",
+    "url": "https://developer.apple.com/xcode/",
     "description": "",
     "tags": []
   },
@@ -1883,9 +1861,16 @@
     "tags": []
   },
   {
+    "category": "Editores e IDEs",
+    "name": "Windsurf",
+    "url": "https://windsurf.com/",
+    "description": "",
+    "tags": []
+  },
+  {
     "category": "Editores online e playgrounds",
     "name": "CodePen",
-    "url": "https://en.wikipedia.org/wiki/CodePen",
+    "url": "https://codepen.io/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1922,14 +1907,14 @@
   {
     "category": "Editores online e playgrounds",
     "name": "JSFiddle",
-    "url": "https://en.wikipedia.org/wiki/JSFiddle",
+    "url": "https://jsfiddle.net/",
     "description": "",
     "tags": []
   },
   {
     "category": "Editores online e playgrounds",
     "name": "Kaggle Notebooks",
-    "url": "https://en.wikipedia.org/wiki/Kaggle",
+    "url": "https://www.kaggle.com/code",
     "description": "",
     "tags": []
   },
@@ -1957,7 +1942,7 @@
   {
     "category": "Editores online e playgrounds",
     "name": "Replit",
-    "url": "https://en.wikipedia.org/wiki/Replit",
+    "url": "https://replit.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -1972,35 +1957,35 @@
   {
     "category": "Empresas fundamentais",
     "name": "Adobe",
-    "url": "https://en.wikipedia.org/wiki/Adobe_Inc.",
+    "url": "https://www.adobe.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "Amazon",
-    "url": "https://en.wikipedia.org/wiki/Amazon_(company)",
+    "url": "https://www.aboutamazon.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "AMD",
-    "url": "https://en.wikipedia.org/wiki/AMD",
+    "url": "https://www.amd.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "Anthropic",
-    "url": "https://en.wikipedia.org/wiki/Anthropic",
+    "url": "https://www.anthropic.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "Apple",
-    "url": "https://en.wikipedia.org/wiki/Apple_Inc.",
+    "url": "https://www.apple.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -2008,7 +1993,7 @@
   {
     "category": "Empresas fundamentais",
     "name": "Bell Labs",
-    "url": "https://en.wikipedia.org/wiki/Bell_Labs",
+    "url": "https://www.bell-labs.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -2024,7 +2009,7 @@
   {
     "category": "Empresas fundamentais",
     "name": "Canonical",
-    "url": "https://en.wikipedia.org/wiki/Canonical_(company)",
+    "url": "https://canonical.com/",
     "description": "",
     "tags": []
   },
@@ -2047,14 +2032,14 @@
   {
     "category": "Empresas fundamentais",
     "name": "GitHub",
-    "url": "https://en.wikipedia.org/wiki/GitHub",
+    "url": "https://github.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "Google",
-    "url": "https://en.wikipedia.org/wiki/Google",
+    "url": "https://about.google/",
     "description": "",
     "tags": [],
     "featured": true
@@ -2062,7 +2047,7 @@
   {
     "category": "Empresas fundamentais",
     "name": "IBM",
-    "url": "https://en.wikipedia.org/wiki/IBM",
+    "url": "https://www.ibm.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -2070,28 +2055,28 @@
   {
     "category": "Empresas fundamentais",
     "name": "Intel",
-    "url": "https://en.wikipedia.org/wiki/Intel",
+    "url": "https://www.intel.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "JetBrains",
-    "url": "https://en.wikipedia.org/wiki/JetBrains",
+    "url": "https://www.jetbrains.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "Meta",
-    "url": "https://en.wikipedia.org/wiki/Meta_Platforms",
+    "url": "https://www.meta.com/about/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "Microsoft",
-    "url": "https://en.wikipedia.org/wiki/Microsoft",
+    "url": "https://www.microsoft.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -2107,28 +2092,28 @@
   {
     "category": "Empresas fundamentais",
     "name": "Nvidia",
-    "url": "https://en.wikipedia.org/wiki/Nvidia",
+    "url": "https://www.nvidia.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "OpenAI",
-    "url": "https://en.wikipedia.org/wiki/OpenAI",
+    "url": "https://openai.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "Oracle",
-    "url": "https://en.wikipedia.org/wiki/Oracle_Corporation",
+    "url": "https://www.oracle.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Empresas fundamentais",
     "name": "Red Hat",
-    "url": "https://en.wikipedia.org/wiki/Red_Hat",
+    "url": "https://www.redhat.com/",
     "description": "",
     "tags": []
   },
@@ -2794,21 +2779,21 @@
   {
     "category": "Formatos de dados",
     "name": "Apache Avro",
-    "url": "https://en.wikipedia.org/wiki/Apache_Avro",
+    "url": "https://avro.apache.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Formatos de dados",
     "name": "Apache Parquet",
-    "url": "https://en.wikipedia.org/wiki/Apache_Parquet",
+    "url": "https://parquet.apache.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Formatos de dados",
     "name": "Apache Thrift",
-    "url": "https://en.wikipedia.org/wiki/Apache_Thrift",
+    "url": "https://thrift.apache.org/",
     "description": "",
     "tags": []
   },
@@ -2872,7 +2857,7 @@
   {
     "category": "Formatos de dados",
     "name": "JSON",
-    "url": "https://en.wikipedia.org/wiki/JSON",
+    "url": "https://www.json.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -2887,7 +2872,7 @@
   {
     "category": "Formatos de dados",
     "name": "MessagePack",
-    "url": "https://en.wikipedia.org/wiki/MessagePack",
+    "url": "https://msgpack.org/",
     "description": "",
     "tags": []
   },
@@ -2901,7 +2886,7 @@
   {
     "category": "Formatos de dados",
     "name": "Protocol Buffers",
-    "url": "https://en.wikipedia.org/wiki/Protocol_Buffers",
+    "url": "https://protobuf.dev/",
     "description": "",
     "tags": []
   },
@@ -2929,7 +2914,7 @@
   {
     "category": "Formatos de dados",
     "name": "TOML",
-    "url": "https://en.wikipedia.org/wiki/TOML",
+    "url": "https://toml.io/",
     "description": "",
     "tags": []
   },
@@ -2958,7 +2943,7 @@
   {
     "category": "Formatos de dados",
     "name": "YAML",
-    "url": "https://en.wikipedia.org/wiki/YAML",
+    "url": "https://yaml.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3092,7 +3077,7 @@
   {
     "category": "Formatos de fonte",
     "name": "Font Awesome",
-    "url": "https://en.wikipedia.org/wiki/Font_Awesome",
+    "url": "https://fontawesome.com/",
     "description": "",
     "tags": []
   },
@@ -3437,7 +3422,7 @@
   {
     "category": "Frameworks e bibliotecas",
     "name": ".NET",
-    "url": "https://en.wikipedia.org/wiki/.NET",
+    "url": "https://dotnet.microsoft.com/",
     "description": "",
     "tags": []
   },
@@ -3452,7 +3437,7 @@
   {
     "category": "Frameworks e bibliotecas",
     "name": "Angular",
-    "url": "https://en.wikipedia.org/wiki/Angular_(web_framework)",
+    "url": "https://angular.dev/",
     "description": "",
     "tags": []
   },
@@ -3467,7 +3452,7 @@
   {
     "category": "Frameworks e bibliotecas",
     "name": "ASP.NET",
-    "url": "https://en.wikipedia.org/wiki/ASP.NET",
+    "url": "https://dotnet.microsoft.com/apps/aspnet",
     "description": "",
     "tags": []
   },
@@ -3481,42 +3466,42 @@
   {
     "category": "Frameworks e bibliotecas",
     "name": "Backbone.js",
-    "url": "https://en.wikipedia.org/wiki/Backbone.js",
+    "url": "https://backbonejs.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Bootstrap",
-    "url": "https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)",
+    "url": "https://getbootstrap.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Bun",
-    "url": "https://en.wikipedia.org/wiki/Bun_(software)",
+    "url": "https://bun.sh/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "D3.js",
-    "url": "https://en.wikipedia.org/wiki/D3.js",
+    "url": "https://d3js.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Deno",
-    "url": "https://en.wikipedia.org/wiki/Deno_(software)",
+    "url": "https://deno.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Django",
-    "url": "https://en.wikipedia.org/wiki/Django_(web_framework)",
+    "url": "https://www.djangoproject.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3524,63 +3509,63 @@
   {
     "category": "Frameworks e bibliotecas",
     "name": "Electron",
-    "url": "https://en.wikipedia.org/wiki/Electron_(software_framework)",
+    "url": "https://www.electronjs.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Express.js",
-    "url": "https://en.wikipedia.org/wiki/Express.js",
+    "url": "https://expressjs.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "FastAPI",
-    "url": "https://en.wikipedia.org/wiki/FastAPI",
+    "url": "https://fastapi.tiangolo.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Flask",
-    "url": "https://en.wikipedia.org/wiki/Flask_(web_framework)",
+    "url": "https://flask.palletsprojects.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Flutter",
-    "url": "https://en.wikipedia.org/wiki/Flutter_(software)",
+    "url": "https://flutter.dev/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "jQuery",
-    "url": "https://en.wikipedia.org/wiki/JQuery",
+    "url": "https://jquery.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Laravel",
-    "url": "https://en.wikipedia.org/wiki/Laravel",
+    "url": "https://laravel.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Next.js",
-    "url": "https://en.wikipedia.org/wiki/Next.js",
+    "url": "https://nextjs.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Node.js",
-    "url": "https://en.wikipedia.org/wiki/Node.js",
+    "url": "https://nodejs.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3588,21 +3573,21 @@
   {
     "category": "Frameworks e bibliotecas",
     "name": "Nuxt",
-    "url": "https://en.wikipedia.org/wiki/Nuxt.js",
+    "url": "https://nuxt.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Qt",
-    "url": "https://en.wikipedia.org/wiki/Qt_(software)",
+    "url": "https://www.qt.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "React",
-    "url": "https://en.wikipedia.org/wiki/React_(software)",
+    "url": "https://react.dev/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3610,42 +3595,42 @@
   {
     "category": "Frameworks e bibliotecas",
     "name": "React Native",
-    "url": "https://en.wikipedia.org/wiki/React_Native",
+    "url": "https://reactnative.dev/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Ruby on Rails",
-    "url": "https://en.wikipedia.org/wiki/Ruby_on_Rails",
+    "url": "https://rubyonrails.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Spring",
-    "url": "https://en.wikipedia.org/wiki/Spring_Framework",
+    "url": "https://spring.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Svelte",
-    "url": "https://en.wikipedia.org/wiki/Svelte",
+    "url": "https://svelte.dev/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Symfony",
-    "url": "https://en.wikipedia.org/wiki/Symfony",
+    "url": "https://symfony.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Tailwind CSS",
-    "url": "https://en.wikipedia.org/wiki/Tailwind_CSS",
+    "url": "https://tailwindcss.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3653,22 +3638,29 @@
   {
     "category": "Frameworks e bibliotecas",
     "name": "Three.js",
-    "url": "https://en.wikipedia.org/wiki/Three.js",
+    "url": "https://threejs.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Frameworks e bibliotecas",
     "name": "Vue.js",
-    "url": "https://en.wikipedia.org/wiki/Vue.js",
+    "url": "https://vuejs.org/",
     "description": "",
     "tags": [],
     "featured": true
   },
   {
+    "category": "Frameworks e bibliotecas",
+    "name": "Vite",
+    "url": "https://vite.dev/",
+    "description": "",
+    "tags": []
+  },
+  {
     "category": "Gerenciadores de pacotes",
     "name": "APT",
-    "url": "https://en.wikipedia.org/wiki/APT_(software)",
+    "url": "https://wiki.debian.org/Apt",
     "description": "",
     "tags": []
   },
@@ -3683,63 +3675,63 @@
   {
     "category": "Gerenciadores de pacotes",
     "name": "Cargo",
-    "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)#Cargo",
+    "url": "https://doc.rust-lang.org/cargo/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "Chocolatey",
-    "url": "https://en.wikipedia.org/wiki/Chocolatey",
+    "url": "https://chocolatey.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "CocoaPods",
-    "url": "https://en.wikipedia.org/wiki/CocoaPods",
+    "url": "https://cocoapods.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "Composer",
-    "url": "https://en.wikipedia.org/wiki/Composer_(software)",
+    "url": "https://getcomposer.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "Conda",
-    "url": "https://en.wikipedia.org/wiki/Conda_(package_manager)",
+    "url": "https://docs.conda.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "CPAN",
-    "url": "https://en.wikipedia.org/wiki/CPAN",
+    "url": "https://www.cpan.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "Flatpak",
-    "url": "https://en.wikipedia.org/wiki/Flatpak",
+    "url": "https://flatpak.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "Gradle",
-    "url": "https://en.wikipedia.org/wiki/Gradle",
+    "url": "https://gradle.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "Homebrew",
-    "url": "https://en.wikipedia.org/wiki/Homebrew_(package_manager)",
+    "url": "https://brew.sh/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3747,14 +3739,14 @@
   {
     "category": "Gerenciadores de pacotes",
     "name": "Maven",
-    "url": "https://en.wikipedia.org/wiki/Apache_Maven",
+    "url": "https://maven.apache.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "npm",
-    "url": "https://en.wikipedia.org/wiki/Npm",
+    "url": "https://www.npmjs.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3762,14 +3754,14 @@
   {
     "category": "Gerenciadores de pacotes",
     "name": "NuGet",
-    "url": "https://en.wikipedia.org/wiki/NuGet",
+    "url": "https://www.nuget.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "pip",
-    "url": "https://en.wikipedia.org/wiki/Pip_(package_manager)",
+    "url": "https://pip.pypa.io/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3784,35 +3776,42 @@
   {
     "category": "Gerenciadores de pacotes",
     "name": "PyPI",
-    "url": "https://en.wikipedia.org/wiki/Python_Package_Index",
+    "url": "https://pypi.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "RubyGems",
-    "url": "https://en.wikipedia.org/wiki/RubyGems",
+    "url": "https://rubygems.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "Snap",
-    "url": "https://en.wikipedia.org/wiki/Snap_(software)",
+    "url": "https://snapcraft.io/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "winget",
-    "url": "https://en.wikipedia.org/wiki/Windows_Package_Manager",
+    "url": "https://learn.microsoft.com/windows/package-manager/",
     "description": "",
     "tags": []
   },
   {
     "category": "Gerenciadores de pacotes",
     "name": "Yarn",
-    "url": "https://en.wikipedia.org/wiki/Yarn_(package_manager)",
+    "url": "https://yarnpkg.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerenciadores de pacotes",
+    "name": "uv",
+    "url": "https://docs.astral.sh/uv/",
     "description": "",
     "tags": []
   },
@@ -3941,7 +3940,7 @@
   {
     "category": "Linguagens de consulta",
     "name": "GraphQL",
-    "url": "https://en.wikipedia.org/wiki/GraphQL",
+    "url": "https://graphql.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -3949,7 +3948,7 @@
   {
     "category": "Linguagens de consulta",
     "name": "jq",
-    "url": "https://en.wikipedia.org/wiki/Jq_(programming_language)",
+    "url": "https://jqlang.org/",
     "description": "",
     "tags": []
   },
@@ -4031,21 +4030,21 @@
   {
     "category": "Linguagens de estilo",
     "name": "Less",
-    "url": "https://en.wikipedia.org/wiki/Less_(style_sheet_language)",
+    "url": "https://lesscss.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de estilo",
     "name": "PostCSS",
-    "url": "https://en.wikipedia.org/wiki/PostCSS",
+    "url": "https://postcss.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de estilo",
     "name": "Sass",
-    "url": "https://en.wikipedia.org/wiki/Sass_(style_sheet_language)",
+    "url": "https://sass-lang.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4053,7 +4052,7 @@
   {
     "category": "Linguagens de estilo",
     "name": "Stylus",
-    "url": "https://en.wikipedia.org/wiki/Stylus_(style_sheet_language)",
+    "url": "https://stylus-lang.com/",
     "description": "",
     "tags": []
   },
@@ -4074,7 +4073,7 @@
   {
     "category": "Linguagens de marcação",
     "name": "AsciiDoc",
-    "url": "https://en.wikipedia.org/wiki/AsciiDoc",
+    "url": "https://asciidoc.org/",
     "description": "",
     "tags": []
   },
@@ -4110,7 +4109,7 @@
   {
     "category": "Linguagens de marcação",
     "name": "LaTeX",
-    "url": "https://en.wikipedia.org/wiki/LaTeX",
+    "url": "https://www.latex-project.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4118,7 +4117,7 @@
   {
     "category": "Linguagens de marcação",
     "name": "Markdown",
-    "url": "https://en.wikipedia.org/wiki/Markdown",
+    "url": "https://daringfireball.net/projects/markdown/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4140,7 +4139,7 @@
   {
     "category": "Linguagens de marcação",
     "name": "Org-mode",
-    "url": "https://en.wikipedia.org/wiki/Org-mode",
+    "url": "https://orgmode.org/",
     "description": "",
     "tags": []
   },
@@ -4175,7 +4174,7 @@
   {
     "category": "Linguagens de marcação",
     "name": "Typst",
-    "url": "https://en.wikipedia.org/wiki/Typst",
+    "url": "https://typst.app/",
     "description": "",
     "tags": []
   },
@@ -4220,7 +4219,7 @@
   {
     "category": "Linguagens de marcação",
     "name": "YAML",
-    "url": "https://en.wikipedia.org/wiki/YAML",
+    "url": "https://yaml.org/",
     "description": "",
     "tags": []
   },
@@ -4242,7 +4241,7 @@
   {
     "category": "Linguagens de programação",
     "name": "Ada",
-    "url": "https://en.wikipedia.org/wiki/Ada_(programming_language)",
+    "url": "https://ada-lang.io/",
     "description": "",
     "tags": []
   },
@@ -4286,7 +4285,7 @@
   {
     "category": "Linguagens de programação",
     "name": "Bash",
-    "url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)",
+    "url": "https://www.gnu.org/software/bash/",
     "description": "",
     "tags": []
   },
@@ -4316,21 +4315,21 @@
   {
     "category": "Linguagens de programação",
     "name": "C#",
-    "url": "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)",
+    "url": "https://learn.microsoft.com/dotnet/csharp/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "C++",
-    "url": "https://en.wikipedia.org/wiki/C%2B%2B",
+    "url": "https://isocpp.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Clojure",
-    "url": "https://en.wikipedia.org/wiki/Clojure",
+    "url": "https://clojure.org/",
     "description": "",
     "tags": []
   },
@@ -4344,77 +4343,77 @@
   {
     "category": "Linguagens de programação",
     "name": "CoffeeScript",
-    "url": "https://en.wikipedia.org/wiki/CoffeeScript",
+    "url": "https://coffeescript.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Common Lisp",
-    "url": "https://en.wikipedia.org/wiki/Common_Lisp",
+    "url": "https://lisp-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Crystal",
-    "url": "https://en.wikipedia.org/wiki/Crystal_(programming_language)",
+    "url": "https://crystal-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "D",
-    "url": "https://en.wikipedia.org/wiki/D_(programming_language)",
+    "url": "https://dlang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Dart",
-    "url": "https://en.wikipedia.org/wiki/Dart_(programming_language)",
+    "url": "https://dart.dev/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Delphi",
-    "url": "https://en.wikipedia.org/wiki/Delphi_(software)",
+    "url": "https://www.embarcadero.com/products/delphi",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Eiffel",
-    "url": "https://en.wikipedia.org/wiki/Eiffel_(programming_language)",
+    "url": "https://www.eiffel.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Elixir",
-    "url": "https://en.wikipedia.org/wiki/Elixir_(programming_language)",
+    "url": "https://elixir-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Elm",
-    "url": "https://en.wikipedia.org/wiki/Elm_(programming_language)",
+    "url": "https://elm-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Erlang",
-    "url": "https://en.wikipedia.org/wiki/Erlang_(programming_language)",
+    "url": "https://www.erlang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "F#",
-    "url": "https://en.wikipedia.org/wiki/F_Sharp_(programming_language)",
+    "url": "https://fsharp.org/",
     "description": "",
     "tags": []
   },
@@ -4436,56 +4435,56 @@
   {
     "category": "Linguagens de programação",
     "name": "Fortran",
-    "url": "https://en.wikipedia.org/wiki/Fortran",
+    "url": "https://fortran-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Gleam",
-    "url": "https://en.wikipedia.org/wiki/Gleam_(programming_language)",
+    "url": "https://gleam.run/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Go",
-    "url": "https://en.wikipedia.org/wiki/Go_(programming_language)",
+    "url": "https://go.dev/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Groovy",
-    "url": "https://en.wikipedia.org/wiki/Apache_Groovy",
+    "url": "https://groovy-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Hack",
-    "url": "https://en.wikipedia.org/wiki/Hack_(programming_language)",
+    "url": "https://hacklang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Haskell",
-    "url": "https://en.wikipedia.org/wiki/Haskell",
+    "url": "https://www.haskell.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Haxe",
-    "url": "https://en.wikipedia.org/wiki/Haxe",
+    "url": "https://haxe.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Java",
-    "url": "https://en.wikipedia.org/wiki/Java_(programming_language)",
+    "url": "https://dev.java/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4501,14 +4500,14 @@
   {
     "category": "Linguagens de programação",
     "name": "Julia",
-    "url": "https://en.wikipedia.org/wiki/Julia_(programming_language)",
+    "url": "https://julialang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Kotlin",
-    "url": "https://en.wikipedia.org/wiki/Kotlin_(programming_language)",
+    "url": "https://kotlinlang.org/",
     "description": "",
     "tags": []
   },
@@ -4522,7 +4521,7 @@
   {
     "category": "Linguagens de programação",
     "name": "Lua",
-    "url": "https://en.wikipedia.org/wiki/Lua",
+    "url": "https://www.lua.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4530,7 +4529,7 @@
   {
     "category": "Linguagens de programação",
     "name": "MATLAB",
-    "url": "https://en.wikipedia.org/wiki/MATLAB",
+    "url": "https://www.mathworks.com/products/matlab.html",
     "description": "",
     "tags": []
   },
@@ -4544,14 +4543,14 @@
   {
     "category": "Linguagens de programação",
     "name": "Mojo",
-    "url": "https://en.wikipedia.org/wiki/Mojo_(programming_language)",
+    "url": "https://www.modular.com/mojo",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Nim",
-    "url": "https://en.wikipedia.org/wiki/Nim_(programming_language)",
+    "url": "https://nim-lang.org/",
     "description": "",
     "tags": []
   },
@@ -4565,7 +4564,7 @@
   {
     "category": "Linguagens de programação",
     "name": "OCaml",
-    "url": "https://en.wikipedia.org/wiki/OCaml",
+    "url": "https://ocaml.org/",
     "description": "",
     "tags": []
   },
@@ -4579,14 +4578,14 @@
   {
     "category": "Linguagens de programação",
     "name": "Perl",
-    "url": "https://en.wikipedia.org/wiki/Perl",
+    "url": "https://www.perl.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "PHP",
-    "url": "https://en.wikipedia.org/wiki/PHP",
+    "url": "https://www.php.net/",
     "description": "",
     "tags": []
   },
@@ -4608,7 +4607,7 @@
   {
     "category": "Linguagens de programação",
     "name": "PowerShell",
-    "url": "https://en.wikipedia.org/wiki/PowerShell",
+    "url": "https://learn.microsoft.com/powershell/",
     "description": "",
     "tags": []
   },
@@ -4622,7 +4621,7 @@
   {
     "category": "Linguagens de programação",
     "name": "Python",
-    "url": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+    "url": "https://www.python.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4630,35 +4629,35 @@
   {
     "category": "Linguagens de programação",
     "name": "R",
-    "url": "https://en.wikipedia.org/wiki/R_(programming_language)",
+    "url": "https://www.r-project.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Racket",
-    "url": "https://en.wikipedia.org/wiki/Racket_(programming_language)",
+    "url": "https://racket-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Raku",
-    "url": "https://en.wikipedia.org/wiki/Raku_(programming_language)",
+    "url": "https://raku.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Ruby",
-    "url": "https://en.wikipedia.org/wiki/Ruby_(programming_language)",
+    "url": "https://www.ruby-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Rust",
-    "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+    "url": "https://www.rust-lang.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4666,14 +4665,14 @@
   {
     "category": "Linguagens de programação",
     "name": "Scala",
-    "url": "https://en.wikipedia.org/wiki/Scala_(programming_language)",
+    "url": "https://www.scala-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Scheme",
-    "url": "https://en.wikipedia.org/wiki/Scheme_(programming_language)",
+    "url": "https://www.scheme.org/",
     "description": "",
     "tags": []
   },
@@ -4702,7 +4701,7 @@
   {
     "category": "Linguagens de programação",
     "name": "Solidity",
-    "url": "https://en.wikipedia.org/wiki/Solidity",
+    "url": "https://soliditylang.org/",
     "description": "",
     "tags": []
   },
@@ -4716,21 +4715,21 @@
   {
     "category": "Linguagens de programação",
     "name": "Swift",
-    "url": "https://en.wikipedia.org/wiki/Swift_(programming_language)",
+    "url": "https://www.swift.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Tcl",
-    "url": "https://en.wikipedia.org/wiki/Tcl_(programming_language)",
+    "url": "https://www.tcl-lang.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "TypeScript",
-    "url": "https://en.wikipedia.org/wiki/TypeScript",
+    "url": "https://www.typescriptlang.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4761,21 +4760,21 @@
   {
     "category": "Linguagens de programação",
     "name": "Visual Basic .NET",
-    "url": "https://en.wikipedia.org/wiki/Visual_Basic_(.NET)",
+    "url": "https://learn.microsoft.com/dotnet/visual-basic/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "WebAssembly",
-    "url": "https://en.wikipedia.org/wiki/WebAssembly",
+    "url": "https://webassembly.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Linguagens de programação",
     "name": "Zig",
-    "url": "https://en.wikipedia.org/wiki/Zig_(programming_language)",
+    "url": "https://ziglang.org/",
     "description": "",
     "tags": []
   },
@@ -4911,7 +4910,7 @@
   {
     "category": "Nuvem e hospedagem",
     "name": "Amazon Web Services",
-    "url": "https://en.wikipedia.org/wiki/Amazon_Web_Services",
+    "url": "https://aws.amazon.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4919,14 +4918,14 @@
   {
     "category": "Nuvem e hospedagem",
     "name": "Cloudflare",
-    "url": "https://en.wikipedia.org/wiki/Cloudflare",
+    "url": "https://www.cloudflare.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Nuvem e hospedagem",
     "name": "DigitalOcean",
-    "url": "https://en.wikipedia.org/wiki/DigitalOcean",
+    "url": "https://www.digitalocean.com/",
     "description": "",
     "tags": []
   },
@@ -4948,14 +4947,14 @@
   {
     "category": "Nuvem e hospedagem",
     "name": "GitHub Pages",
-    "url": "https://en.wikipedia.org/wiki/GitHub#GitHub_Pages",
+    "url": "https://pages.github.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Nuvem e hospedagem",
     "name": "Google Cloud",
-    "url": "https://en.wikipedia.org/wiki/Google_Cloud_Platform",
+    "url": "https://cloud.google.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4963,35 +4962,35 @@
   {
     "category": "Nuvem e hospedagem",
     "name": "Heroku",
-    "url": "https://en.wikipedia.org/wiki/Heroku",
+    "url": "https://www.heroku.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Nuvem e hospedagem",
     "name": "Hostinger",
-    "url": "https://en.wikipedia.org/wiki/Hostinger",
+    "url": "https://www.hostinger.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Nuvem e hospedagem",
     "name": "IBM Cloud",
-    "url": "https://en.wikipedia.org/wiki/IBM_Cloud",
+    "url": "https://www.ibm.com/cloud",
     "description": "",
     "tags": []
   },
   {
     "category": "Nuvem e hospedagem",
     "name": "Linode (Akamai)",
-    "url": "https://en.wikipedia.org/wiki/Linode",
+    "url": "https://www.linode.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Nuvem e hospedagem",
     "name": "Microsoft Azure",
-    "url": "https://en.wikipedia.org/wiki/Microsoft_Azure",
+    "url": "https://azure.microsoft.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -4999,14 +4998,14 @@
   {
     "category": "Nuvem e hospedagem",
     "name": "Netlify",
-    "url": "https://en.wikipedia.org/wiki/Netlify",
+    "url": "https://www.netlify.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Nuvem e hospedagem",
     "name": "Oracle Cloud",
-    "url": "https://en.wikipedia.org/wiki/Oracle_Cloud",
+    "url": "https://www.oracle.com/cloud/",
     "description": "",
     "tags": []
   },
@@ -5028,56 +5027,56 @@
   {
     "category": "Nuvem e hospedagem",
     "name": "Vercel",
-    "url": "https://en.wikipedia.org/wiki/Vercel",
+    "url": "https://vercel.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "ACM",
-    "url": "https://en.wikipedia.org/wiki/Association_for_Computing_Machinery",
+    "url": "https://www.acm.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "Apache Software Foundation",
-    "url": "https://en.wikipedia.org/wiki/The_Apache_Software_Foundation",
+    "url": "https://www.apache.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "ECMA International",
-    "url": "https://en.wikipedia.org/wiki/Ecma_International",
+    "url": "https://ecma-international.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "Free Software Foundation",
-    "url": "https://en.wikipedia.org/wiki/Free_Software_Foundation",
+    "url": "https://www.fsf.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "ICANN",
-    "url": "https://en.wikipedia.org/wiki/ICANN",
+    "url": "https://www.icann.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "IEEE",
-    "url": "https://en.wikipedia.org/wiki/Institute_of_Electrical_and_Electronics_Engineers",
+    "url": "https://www.ieee.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "IETF",
-    "url": "https://en.wikipedia.org/wiki/Internet_Engineering_Task_Force",
+    "url": "https://www.ietf.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -5085,28 +5084,28 @@
   {
     "category": "Organizações e padrões",
     "name": "Internet Archive",
-    "url": "https://en.wikipedia.org/wiki/Internet_Archive",
+    "url": "https://archive.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "ISO",
-    "url": "https://en.wikipedia.org/wiki/International_Organization_for_Standardization",
+    "url": "https://www.iso.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "Linux Foundation",
-    "url": "https://en.wikipedia.org/wiki/Linux_Foundation",
+    "url": "https://www.linuxfoundation.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "Mozilla Foundation",
-    "url": "https://en.wikipedia.org/wiki/Mozilla_Foundation",
+    "url": "https://foundation.mozilla.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -5114,35 +5113,35 @@
   {
     "category": "Organizações e padrões",
     "name": "Open Source Initiative",
-    "url": "https://en.wikipedia.org/wiki/Open_Source_Initiative",
+    "url": "https://opensource.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "OpenJS Foundation",
-    "url": "https://en.wikipedia.org/wiki/OpenJS_Foundation",
+    "url": "https://openjsf.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "Python Software Foundation",
-    "url": "https://en.wikipedia.org/wiki/Python_Software_Foundation",
+    "url": "https://www.python.org/psf-landing/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "Unicode Consortium",
-    "url": "https://en.wikipedia.org/wiki/Unicode_Consortium",
+    "url": "https://home.unicode.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Organizações e padrões",
     "name": "W3C",
-    "url": "https://en.wikipedia.org/wiki/World_Wide_Web_Consortium",
+    "url": "https://www.w3.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -5150,7 +5149,7 @@
   {
     "category": "Organizações e padrões",
     "name": "WHATWG",
-    "url": "https://en.wikipedia.org/wiki/WHATWG",
+    "url": "https://whatwg.org/",
     "description": "",
     "tags": []
   },
@@ -5429,7 +5428,7 @@
   {
     "category": "Programação visual e educativa",
     "name": "Blockly",
-    "url": "https://en.wikipedia.org/wiki/Blockly",
+    "url": "https://developers.google.com/blockly",
     "description": "",
     "tags": []
   },
@@ -5443,7 +5442,7 @@
   {
     "category": "Programação visual e educativa",
     "name": "LabVIEW",
-    "url": "https://en.wikipedia.org/wiki/LabVIEW",
+    "url": "https://www.ni.com/labview",
     "description": "",
     "tags": []
   },
@@ -5466,35 +5465,35 @@
   {
     "category": "Programação visual e educativa",
     "name": "Max/MSP",
-    "url": "https://en.wikipedia.org/wiki/Max_(software)",
+    "url": "https://cycling74.com/products/max",
     "description": "",
     "tags": []
   },
   {
     "category": "Programação visual e educativa",
     "name": "MIT App Inventor",
-    "url": "https://en.wikipedia.org/wiki/App_Inventor_for_Android",
+    "url": "https://appinventor.mit.edu/",
     "description": "",
     "tags": []
   },
   {
     "category": "Programação visual e educativa",
     "name": "Node-RED",
-    "url": "https://en.wikipedia.org/wiki/Node-RED",
+    "url": "https://nodered.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Programação visual e educativa",
     "name": "Pure Data",
-    "url": "https://en.wikipedia.org/wiki/Pure_Data",
+    "url": "https://puredata.info/",
     "description": "",
     "tags": []
   },
   {
     "category": "Programação visual e educativa",
     "name": "Scratch",
-    "url": "https://en.wikipedia.org/wiki/Scratch_(programming_language)",
+    "url": "https://scratch.mit.edu/",
     "description": "",
     "tags": [],
     "featured": true
@@ -5502,7 +5501,7 @@
   {
     "category": "Programação visual e educativa",
     "name": "Snap!",
-    "url": "https://en.wikipedia.org/wiki/Snap!_(programming_language)",
+    "url": "https://snap.berkeley.edu/",
     "description": "",
     "tags": []
   },
@@ -5775,7 +5774,7 @@
   {
     "category": "Prática e desafios",
     "name": "Advent of Code",
-    "url": "https://en.wikipedia.org/wiki/Advent_of_Code",
+    "url": "https://adventofcode.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -5797,14 +5796,14 @@
   {
     "category": "Prática e desafios",
     "name": "Codeforces",
-    "url": "https://en.wikipedia.org/wiki/Codeforces",
+    "url": "https://codeforces.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Prática e desafios",
     "name": "Codewars",
-    "url": "https://en.wikipedia.org/wiki/Codewars",
+    "url": "https://www.codewars.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -5812,7 +5811,7 @@
   {
     "category": "Prática e desafios",
     "name": "CodinGame",
-    "url": "https://en.wikipedia.org/wiki/CodinGame",
+    "url": "https://www.codingame.com/",
     "description": "",
     "tags": []
   },
@@ -5826,7 +5825,7 @@
   {
     "category": "Prática e desafios",
     "name": "Exercism",
-    "url": "https://en.wikipedia.org/wiki/Exercism",
+    "url": "https://exercism.org/",
     "description": "",
     "tags": []
   },
@@ -5848,35 +5847,35 @@
   {
     "category": "Prática e desafios",
     "name": "HackerRank",
-    "url": "https://en.wikipedia.org/wiki/HackerRank",
+    "url": "https://www.hackerrank.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Prática e desafios",
     "name": "ICPC",
-    "url": "https://en.wikipedia.org/wiki/International_Collegiate_Programming_Contest",
+    "url": "https://icpc.global/",
     "description": "",
     "tags": []
   },
   {
     "category": "Prática e desafios",
     "name": "International Olympiad in Informatics",
-    "url": "https://en.wikipedia.org/wiki/International_Olympiad_in_Informatics",
+    "url": "https://ioinformatics.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Prática e desafios",
     "name": "Kaggle",
-    "url": "https://en.wikipedia.org/wiki/Kaggle",
+    "url": "https://www.kaggle.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Prática e desafios",
     "name": "LeetCode",
-    "url": "https://en.wikipedia.org/wiki/LeetCode",
+    "url": "https://leetcode.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -5884,21 +5883,21 @@
   {
     "category": "Prática e desafios",
     "name": "Project Euler",
-    "url": "https://en.wikipedia.org/wiki/Project_Euler",
+    "url": "https://projecteuler.net/",
     "description": "",
     "tags": []
   },
   {
     "category": "Prática e desafios",
     "name": "Rosalind",
-    "url": "https://en.wikipedia.org/wiki/Rosalind_(education_platform)",
+    "url": "https://rosalind.info/",
     "description": "",
     "tags": []
   },
   {
     "category": "Prática e desafios",
     "name": "TopCoder",
-    "url": "https://en.wikipedia.org/wiki/Topcoder",
+    "url": "https://www.topcoder.com/",
     "description": "",
     "tags": []
   },
@@ -5963,7 +5962,7 @@
   {
     "category": "Segurança",
     "name": "CVE",
-    "url": "https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures",
+    "url": "https://www.cve.org/",
     "description": "",
     "tags": []
   },
@@ -6006,7 +6005,7 @@
   {
     "category": "Segurança",
     "name": "OWASP",
-    "url": "https://en.wikipedia.org/wiki/OWASP",
+    "url": "https://owasp.org/",
     "description": "",
     "tags": []
   },
@@ -6039,9 +6038,16 @@
     "tags": []
   },
   {
+    "category": "Segurança",
+    "name": "Let's Encrypt",
+    "url": "https://letsencrypt.org/",
+    "description": "",
+    "tags": []
+  },
+  {
     "category": "Shells e terminais",
     "name": "Bash",
-    "url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)",
+    "url": "https://www.gnu.org/software/bash/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6063,28 +6069,28 @@
   {
     "category": "Shells e terminais",
     "name": "Fish",
-    "url": "https://en.wikipedia.org/wiki/Fish_(Unix_shell)",
+    "url": "https://fishshell.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Shells e terminais",
     "name": "GNOME Terminal",
-    "url": "https://en.wikipedia.org/wiki/GNOME_Terminal",
+    "url": "https://help.gnome.org/users/gnome-terminal/stable/",
     "description": "",
     "tags": []
   },
   {
     "category": "Shells e terminais",
     "name": "iTerm2",
-    "url": "https://en.wikipedia.org/wiki/ITerm2",
+    "url": "https://iterm2.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Shells e terminais",
     "name": "Konsole",
-    "url": "https://en.wikipedia.org/wiki/Konsole",
+    "url": "https://konsole.kde.org/",
     "description": "",
     "tags": []
   },
@@ -6105,7 +6111,7 @@
   {
     "category": "Shells e terminais",
     "name": "PowerShell",
-    "url": "https://en.wikipedia.org/wiki/PowerShell",
+    "url": "https://learn.microsoft.com/powershell/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6120,21 +6126,21 @@
   {
     "category": "Shells e terminais",
     "name": "PuTTY",
-    "url": "https://en.wikipedia.org/wiki/PuTTY",
+    "url": "https://www.chiark.greenend.org.uk/~sgtatham/putty/",
     "description": "",
     "tags": []
   },
   {
     "category": "Shells e terminais",
     "name": "Terminal (macOS)",
-    "url": "https://en.wikipedia.org/wiki/Terminal_(macOS)",
+    "url": "https://support.apple.com/guide/terminal/welcome/mac",
     "description": "",
     "tags": []
   },
   {
     "category": "Shells e terminais",
     "name": "tmux",
-    "url": "https://en.wikipedia.org/wiki/Tmux",
+    "url": "https://github.com/tmux/tmux/wiki",
     "description": "",
     "tags": []
   },
@@ -6148,14 +6154,14 @@
   {
     "category": "Shells e terminais",
     "name": "Windows Terminal",
-    "url": "https://en.wikipedia.org/wiki/Windows_Terminal",
+    "url": "https://learn.microsoft.com/windows/terminal/",
     "description": "",
     "tags": []
   },
   {
     "category": "Shells e terminais",
     "name": "Zsh",
-    "url": "https://en.wikipedia.org/wiki/Z_shell",
+    "url": "https://www.zsh.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6170,21 +6176,21 @@
   {
     "category": "Sistemas de automação",
     "name": "Apache Airflow",
-    "url": "https://en.wikipedia.org/wiki/Apache_Airflow",
+    "url": "https://airflow.apache.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas de automação",
     "name": "Atalhos (Apple Shortcuts)",
-    "url": "https://en.wikipedia.org/wiki/Shortcuts_(Apple)",
+    "url": "https://support.apple.com/guide/shortcuts/welcome/ios",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas de automação",
     "name": "Automation Anywhere",
-    "url": "https://en.wikipedia.org/wiki/Automation_Anywhere",
+    "url": "https://www.automationanywhere.com/",
     "description": "",
     "tags": []
   },
@@ -6198,14 +6204,14 @@
   {
     "category": "Sistemas de automação",
     "name": "GNU Make",
-    "url": "https://en.wikipedia.org/wiki/Make_(software)",
+    "url": "https://www.gnu.org/software/make/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas de automação",
     "name": "Home Assistant",
-    "url": "https://en.wikipedia.org/wiki/Home_Assistant",
+    "url": "https://www.home-assistant.io/",
     "description": "",
     "tags": []
   },
@@ -6219,7 +6225,7 @@
   {
     "category": "Sistemas de automação",
     "name": "IFTTT",
-    "url": "https://en.wikipedia.org/wiki/IFTTT",
+    "url": "https://ifttt.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6234,7 +6240,7 @@
   {
     "category": "Sistemas de automação",
     "name": "Microsoft Power Automate",
-    "url": "https://en.wikipedia.org/wiki/Microsoft_Power_Automate",
+    "url": "https://www.microsoft.com/power-platform/products/power-automate",
     "description": "",
     "tags": []
   },
@@ -6249,7 +6255,7 @@
   {
     "category": "Sistemas de automação",
     "name": "Node-RED",
-    "url": "https://en.wikipedia.org/wiki/Node-RED",
+    "url": "https://nodered.org/",
     "description": "",
     "tags": []
   },
@@ -6270,7 +6276,7 @@
   {
     "category": "Sistemas de automação",
     "name": "Selenium",
-    "url": "https://en.wikipedia.org/wiki/Selenium_(software)",
+    "url": "https://www.selenium.dev/",
     "description": "",
     "tags": []
   },
@@ -6284,21 +6290,21 @@
   {
     "category": "Sistemas de automação",
     "name": "UiPath",
-    "url": "https://en.wikipedia.org/wiki/UiPath",
+    "url": "https://www.uipath.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas de automação",
     "name": "Workato",
-    "url": "https://en.wikipedia.org/wiki/Workato",
+    "url": "https://www.workato.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas de automação",
     "name": "Zapier",
-    "url": "https://en.wikipedia.org/wiki/Zapier",
+    "url": "https://zapier.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6516,7 +6522,7 @@
   {
     "category": "Sistemas operacionais",
     "name": "Android",
-    "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
+    "url": "https://www.android.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6524,7 +6530,7 @@
   {
     "category": "Sistemas operacionais",
     "name": "Arch Linux",
-    "url": "https://en.wikipedia.org/wiki/Arch_Linux",
+    "url": "https://archlinux.org/",
     "description": "",
     "tags": []
   },
@@ -6555,7 +6561,7 @@
   {
     "category": "Sistemas operacionais",
     "name": "ChromeOS",
-    "url": "https://en.wikipedia.org/wiki/ChromeOS",
+    "url": "https://chromeos.google/",
     "description": "",
     "tags": []
   },
@@ -6570,14 +6576,14 @@
   {
     "category": "Sistemas operacionais",
     "name": "Debian",
-    "url": "https://en.wikipedia.org/wiki/Debian",
+    "url": "https://www.debian.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "Fedora",
-    "url": "https://en.wikipedia.org/wiki/Fedora_Linux",
+    "url": "https://fedoraproject.org/",
     "description": "",
     "tags": []
   },
@@ -6592,35 +6598,35 @@
   {
     "category": "Sistemas operacionais",
     "name": "FreeBSD",
-    "url": "https://en.wikipedia.org/wiki/FreeBSD",
+    "url": "https://www.freebsd.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "FreeDOS",
-    "url": "https://en.wikipedia.org/wiki/FreeDOS",
+    "url": "https://www.freedos.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "Haiku",
-    "url": "https://en.wikipedia.org/wiki/Haiku_(operating_system)",
+    "url": "https://www.haiku-os.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "HarmonyOS",
-    "url": "https://en.wikipedia.org/wiki/HarmonyOS",
+    "url": "https://www.harmonyos.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "iOS",
-    "url": "https://en.wikipedia.org/wiki/IOS",
+    "url": "https://www.apple.com/ios/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6628,21 +6634,21 @@
   {
     "category": "Sistemas operacionais",
     "name": "iPadOS",
-    "url": "https://en.wikipedia.org/wiki/IPadOS",
+    "url": "https://www.apple.com/ipados/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "Kali Linux",
-    "url": "https://en.wikipedia.org/wiki/Kali_Linux",
+    "url": "https://www.kali.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "Linux",
-    "url": "https://en.wikipedia.org/wiki/Linux",
+    "url": "https://www.kernel.org/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6650,14 +6656,14 @@
   {
     "category": "Sistemas operacionais",
     "name": "Linux Mint",
-    "url": "https://en.wikipedia.org/wiki/Linux_Mint",
+    "url": "https://linuxmint.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "macOS",
-    "url": "https://en.wikipedia.org/wiki/MacOS",
+    "url": "https://www.apple.com/macos/",
     "description": "",
     "tags": [],
     "featured": true
@@ -6673,7 +6679,7 @@
   {
     "category": "Sistemas operacionais",
     "name": "OpenBSD",
-    "url": "https://en.wikipedia.org/wiki/OpenBSD",
+    "url": "https://www.openbsd.org/",
     "description": "",
     "tags": []
   },
@@ -6696,14 +6702,14 @@
   {
     "category": "Sistemas operacionais",
     "name": "Red Hat Enterprise Linux",
-    "url": "https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux",
+    "url": "https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "Solaris",
-    "url": "https://en.wikipedia.org/wiki/Oracle_Solaris",
+    "url": "https://www.oracle.com/solaris/",
     "description": "",
     "tags": []
   },
@@ -6718,14 +6724,14 @@
   {
     "category": "Sistemas operacionais",
     "name": "Tizen",
-    "url": "https://en.wikipedia.org/wiki/Tizen",
+    "url": "https://www.tizen.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Sistemas operacionais",
     "name": "Ubuntu",
-    "url": "https://en.wikipedia.org/wiki/Ubuntu",
+    "url": "https://ubuntu.com/",
     "description": "",
     "tags": []
   },
@@ -6747,7 +6753,7 @@
   {
     "category": "Sistemas operacionais",
     "name": "Windows",
-    "url": "https://en.wikipedia.org/wiki/Microsoft_Windows",
+    "url": "https://www.microsoft.com/windows",
     "description": "",
     "tags": [],
     "featured": true
@@ -6785,7 +6791,7 @@
   {
     "category": "Tecnologias web",
     "name": "Blink",
-    "url": "https://en.wikipedia.org/wiki/Blink_(browser_engine)",
+    "url": "https://www.chromium.org/blink/",
     "description": "",
     "tags": []
   },
@@ -6931,7 +6937,7 @@
   {
     "category": "Tecnologias web",
     "name": "WebKit",
-    "url": "https://en.wikipedia.org/wiki/WebKit",
+    "url": "https://webkit.org/",
     "description": "",
     "tags": []
   },
@@ -7118,6 +7124,37 @@
     "category": "Tipos de linguagem computacional",
     "name": "Tipagem estática",
     "url": "https://en.wikipedia.org/wiki/Type_system#Static_type_checking",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "IA para programação",
+    "name": "Devin",
+    "url": "https://devin.ai/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "IA para programação",
+    "name": "Claude Code",
+    "url": "https://claude.com/product/claude-code",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "IA para programação",
+    "name": "GitHub Copilot",
+    "url": "https://github.com/features/copilot",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "IA para programação",
+    "name": "OpenAI Codex",
+    "url": "https://openai.com/codex/",
     "description": "",
     "tags": []
   }
