@@ -444,7 +444,7 @@ function createCard(item){
   /* align badges right */
   (function(){
     try{
-      var starEl = title.querySelector('.featured-star');
+      var starEl = title.querySelector('.featured-star:not(.ended-badge)');
       var endedEl = title.querySelector('.ended-badge');
       if(endedEl){
         if(starEl){
